@@ -1,0 +1,1 @@
+export type HttpStates = "idle" | "loading" | "success" | "fail"
