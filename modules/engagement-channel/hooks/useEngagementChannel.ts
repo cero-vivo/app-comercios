@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { EngagementChannelPresenter } from '../presentation/engagement-channel-presenter'
 import { EngagementChannelResolverScreen } from '../domain/resolvers-screens'
-import { Post } from '../domain/entities'
+import { FeedPost } from '../domain/entities'
 import { HttpStates } from '@/http/HttpStates'
 
 export const useEngagementChannel = () => {
 
-	const [posts, setPosts] = useState<Post[]>([])
+	const [posts, setPosts] = useState<FeedPost[]>([])
 	const [getPostsState, setGetPostsState] = useState<HttpStates>("idle")
 
 	const operationHandler: EngagementChannelResolverScreen = {

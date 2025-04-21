@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         position: "absolute",
         bottom: 80,
-        width: "80%",
+        width: "60%",
         alignSelf:"center",
         backgroundColor: colors.white,
         borderRadius: 120,

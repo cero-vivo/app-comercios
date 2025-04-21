@@ -1,8 +1,8 @@
 import { HttpResponse } from "@/http/Response"
-import { Post } from "./entities"
+import { FeedPost } from "./entities"
 
 
 //Get posts
 export interface EngagementChannelGetPostsRes {
-    res: HttpResponse<Post>
+    res: HttpResponse<FeedPost>
 }
