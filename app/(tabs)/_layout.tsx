@@ -1,16 +1,12 @@
 import { Tabs } from 'expo-router'
 import React from 'react'
-import Entypo from '@expo/vector-icons/Entypo';
+import { TabBar } from '@/components/TabBar/TabBar';
 
 export default function EngagementChannel() {
 	return (
-		<Tabs>
-			<Tabs.Screen name="index" 
-				options={{ 
-					title: "Canal de fidelización", 
-				}}
-			/>
-			<Tabs.Screen name="About" options={{ title: "About" }} />
+		<Tabs tabBar={(props) => <TabBar {...props} /> }>
+			<Tabs.Screen name="index" options={{ headerShown: false}}/>
+			<Tabs.Screen name="About" options={{ headerShown: false }} />
 		</Tabs>
 	)
 }
