@@ -42,8 +42,8 @@ export const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) =>
                         style={{ flex: 1, alignItems: "center" }}
                         key={route.key}
                     >
-                        {route.name === "index" && <Entypo name={"newsletter"} size={45} color={isFocused ? colors.secondary : colors.tertiary} />}
-                        {route.name === "About" && <Foundation name={"info"} size={45} color={isFocused ? colors.secondary : colors.tertiary} />}
+                        {route.name === "index" && <Entypo name={"newsletter"} size={45} color={isFocused ? colors.primary : colors.tertiary} />}
+                        {route.name === "About" && <Foundation name={"info"} size={45} color={isFocused ? colors.primary : colors.tertiary} />}
                     </TouchableOpacity>
                 );
             })}
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     tabBarContainer: {
         flexDirection: "row",
         position: "absolute",
-        bottom: 80,
+        bottom: 60,
         width: "60%",
         alignSelf:"center",
         backgroundColor: colors.white,
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
         height: 70,
         alignItems: "center",
         justifyContent: "space-between",
-        shadowColor: colors.secondary,
+        shadowColor: colors.primary,
         shadowOffset: {
             width: 0,
             height: 2,
         },
         shadowOpacity: 0.45,
-        shadowRadius: 3.84,
+        shadowRadius: 10.84,
         elevation: 5,
     }
 })

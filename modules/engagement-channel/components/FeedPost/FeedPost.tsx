@@ -38,7 +38,7 @@ export const FeedPost: FC<{ post: FeedPostType }> = (props) => {
 					{post?.createdAt && <Text style={styles.text}>{timeAgo(post.createdAt)}</Text>}
 					{post?.tags && (
 						<View style={styles.tagBox}>
-							<Text style={styles.text}>{translateFeedPostTag(post.tags)}</Text>
+							<Text style={styles.tag}>{translateFeedPostTag(post.tags)}</Text>
 						</View>
 					)}
 				</View>
@@ -48,13 +48,14 @@ export const FeedPost: FC<{ post: FeedPostType }> = (props) => {
 }
 const styles = StyleSheet.create({
 	mainBox: {
-		padding: 14,
+		paddingVertical: 10,
+		paddingHorizontal: 20,
 		borderRadius: 12,
-		backgroundColor: colors.primary,
+		backgroundColor: colors.white,
 		justifyContent: "center",
 		alignItems: "center",
 		width: "100%",
-		rowGap: 14
+		rowGap: 8
 	},
 	shadow: {
 		shadowColor: colors.primary,
@@ -65,6 +66,7 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.45,
 		shadowRadius: 3.84,
 		elevation: 5,
+		marginVertical: 7
 	},
 	expirationBox: {
 		flexDirection: "row",
@@ -74,26 +76,25 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		width: "100%",
-		minHeight: 220,
+		aspectRatio: 1,
 		objectFit: "contain",
 		borderRadius: 12
 	},
 	text: {
-		color: colors.secondary,
+		color: colors.primary,
 		fontWeight: "600"
 	},
 	title: {
 		width: "100%",
-		textAlign: "center",
 		fontWeight: "bold",
 		fontSize: 18,
-		color: colors.tertiary
+		color: colors.secondary
 	},
 	description: {
 		width: "100%",
 		fontWeight: "500",
 		fontSize: 14,
-		color: colors.tertiary
+		color: colors.secondary
 	},
 	bottomRow: {
 		flexDirection: "row",
@@ -102,10 +103,15 @@ const styles = StyleSheet.create({
 		width: "100%",
 	},
 	tagBox: {
-		padding: 5,
+		paddingVertical: 5,
+		paddingHorizontal: 8,
 		borderRadius: 120,
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: colors.white
-	}
+		backgroundColor: "#E7D4C0"
+	},
+	tag: {
+		color: colors.secondary,
+		fontWeight: "800"
+	},
 })

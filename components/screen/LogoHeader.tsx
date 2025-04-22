@@ -6,7 +6,7 @@ export const LogoHeader = (props: { top: number }) => {
     return (
         <Image
             style={styles(props.top).logo}
-            source={require("../../assets/images/logo.png")}
+            source={require("../../assets/images/logo2.png")}
             contentFit="cover"
             transition={100}
         />

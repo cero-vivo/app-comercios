@@ -29,6 +29,7 @@ export const EngagementChannelInfrastructure = () => {
         {
           id: "3",
           title: "¡Pan recién horneado disponible!",
+          description: undefined,
           imageUrl: "https://images.pexels.com/photos/2527676/pexels-photo-2527676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           createdAt: "2025-04-03T09:00:00.000Z",
         },
