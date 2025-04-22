@@ -1,15 +1,21 @@
 import { Screen } from '@/components/screen/Screen'
+import { AboutAddressAndMap } from '@/modules/about/components/AboutAdress&Map'
+import { AboutDescription } from '@/modules/about/components/AboutDescription'
+import { AboutImages } from '@/modules/about/components/AboutImages'
+import { AboutOpeningHours } from '@/modules/about/components/AboutOpeningHours'
 import { useAboutScreen } from '@/modules/about/hooks/useAboutScreen'
 import React from 'react'
-import { Text } from 'react-native'
 
 export default function About(){
 
-	const { brandData } = useAboutScreen()
+	const { businessData } = useAboutScreen()
 	
 	return (
-		<Screen showLogoHeader>
-			<Text>{brandData?.name}</Text>
+		<Screen showLogoHeader style={{paddingBottom: "30%"}}>
+			<AboutDescription text={businessData?.description || ""} />
+			<AboutImages images={businessData?.imagesUrl|| []} />
+			<AboutOpeningHours openingHours={businessData?.openingHours || []} />
+			<AboutAddressAndMap address={businessData?.address || ""} coordinates={businessData?.coordinates || { lat: 0, lng: 0 }} />
 		</Screen>
 	)
 }

@@ -5,12 +5,11 @@ import { AboutActionsResolver } from '../presentation/about-actions-resolver'
 
 export const useAboutScreen = () => {
 
-	const [brandData, setBrandData] = useState<Business>()
+	const [businessData, setBusinessData] = useState<Business>()
 
 	const actionsHandler: AboutActionsResolver = {
 		getBusinessDataSuccess: (res) => {
-			console.log("🚀 ~ useAboutScreen ~ res:", res)
-			setBrandData(res.data)
+			setBusinessData(res.data)
 		},
 		getBusinessDataError: (error) => {
 			console.log(error)
@@ -24,6 +23,6 @@ export const useAboutScreen = () => {
 	}, [])
 
 	return {
-		brandData
+		businessData
 	}
 }

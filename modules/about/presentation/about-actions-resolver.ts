@@ -1,4 +1,4 @@
-import { HttpResponse } from "@/http/Response";
+import { HttpResponse } from "@/api/Response";
 import { Business } from "../model/entities";
 
 export interface AboutActionsResolver {

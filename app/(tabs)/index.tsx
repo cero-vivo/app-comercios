@@ -11,12 +11,12 @@ export default function EngagementChannel() {
 	useEffect(() => getPosts(), [])
 
 	return (
-		<Screen showLogoHeader style={{marginTop: 0}}>
+		<Screen showLogoHeader style={{marginTop: 0, paddingBottom: "30%"}}>
 			<FlashList 
 				data={posts}
 				renderItem={({item}) => <FeedPost post={item} />}
 				keyExtractor={(item) => item?.id}
-				contentContainerStyle={{paddingHorizontal: 10, paddingTop: 20, paddingBottom: 120 }}
+				contentContainerStyle={{paddingHorizontal: 10, paddingTop: 20}}
 				estimatedItemSize={172}
 			/>
 		</Screen>

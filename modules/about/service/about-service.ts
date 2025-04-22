@@ -1,4 +1,4 @@
-import { HttpResponse } from "@/http/Response"
+import { HttpResponse } from "@/api/Response"
 import { Business } from "../model/entities"
 
 export const AboutService = () => {
@@ -15,7 +15,10 @@ export const AboutService = () => {
                     lng: -58.432,
                 },
                 imagesUrl: [
-                    'https://placehold.co/600x400/png?text=Pan+%26+App',
+                    "https://images.pexels.com/photos/30677840/pexels-photo-30677840.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    "https://images.pexels.com/photos/2527676/pexels-photo-2527676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    "https://images.pexels.com/photos/8504385/pexels-photo-8504385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    "https://images.pexels.com/photos/16402067/pexels-photo-16402067/free-photo-of-comida-azucar-postre-dulce.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 ],
                 contact: {
                     phone: '+54 9 11 6362 1415',

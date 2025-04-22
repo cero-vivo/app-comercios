@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { EngagementChannelPresenter } from '../presentation/engagement-channel-presenter'
 import { EngagementChannelResolverScreen } from '../presentation/resolvers-screens'
 import { FeedPost } from '../model/entities'
-import { HttpStates } from '@/http/HttpStates'
+import { HttpStates } from '@/api/HttpStates'
 
 export const useEngagementChannel = () => {
 
