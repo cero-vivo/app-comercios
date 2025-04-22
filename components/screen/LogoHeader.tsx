@@ -19,6 +19,7 @@ const styles = (top:number) => StyleSheet.create({
         height: 85,
         position: "absolute",
         top,
-        alignSelf: "center"
+        alignSelf: "center",
+        zIndex: 100
     }
 })

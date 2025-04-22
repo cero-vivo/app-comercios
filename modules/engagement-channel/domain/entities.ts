@@ -11,3 +11,15 @@ export interface FeedPost {
     expiresAt?: string; // ISO date string
     redirectUrl?: string;
 }
+
+const tagTranslations: Record<FeedPostTag, string> = {
+    recomendation: "Recomendación",
+    news: "Noticias",
+    history: "Historia",
+    event: "Evento",
+    cupon: "Cupón",
+};
+
+export function translateFeedPostTag(tag: FeedPostTag): string {
+    return tagTranslations[tag];
+}

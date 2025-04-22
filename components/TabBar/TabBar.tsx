@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
         height: 70,
         alignItems: "center",
         justifyContent: "space-between",
-        shadowColor: colors.background,
+        shadowColor: colors.secondary,
         shadowOffset: {
             width: 0,
             height: 2,
         },
-        shadowOpacity: 0.25,
+        shadowOpacity: 0.45,
         shadowRadius: 3.84,
         elevation: 5,
     }

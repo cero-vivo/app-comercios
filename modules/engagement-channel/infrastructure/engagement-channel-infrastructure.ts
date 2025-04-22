@@ -8,7 +8,7 @@ export const EngagementChannelInfrastructure = () => {
   return {
     getPost: async (size: number, page: number): Promise<EngagementChannelGetPostsRes> => {
       //Aca se fetchean los posts y se retorna data si es success y error si no
-
+      
       const posts: FeedPost[] = [
         {
           id: "1",
@@ -19,11 +19,12 @@ export const EngagementChannelInfrastructure = () => {
         },
         {
           id: "2",
-          title: "Promo de 2x1 en medialunas",
-          description: "Incorporamos opciones sin gluten y veganas.",
+          title: undefined,
+          description: undefined,
           imageUrl: "https://images.pexels.com/photos/30677840/pexels-photo-30677840.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           createdAt: "2025-04-02T11:00:00.000Z",
-          tags: "cupon",
+          tags: undefined,
+          redirectUrl: "https://www.instagram.com/p/DIua3oJSYJj/"
         },
         {
           id: "3",
@@ -33,10 +34,10 @@ export const EngagementChannelInfrastructure = () => {
         },
         {
           id: "4",
-          title: "Recomendación del día: Focaccia",
+          title: undefined,
           description: "Probalo antes que se agote, edición limitada.",
           createdAt: "2025-04-04T08:30:00.000Z",
-          tags: "recomendation",
+          tags: undefined,
         },
         {
           id: "5",
@@ -44,7 +45,7 @@ export const EngagementChannelInfrastructure = () => {
           description: "Mostrá este cupón y obtené un 15% de descuento.",
           createdAt: "2025-04-05T12:00:00.000Z",
           tags: "cupon",
-          expiresAt: "2025-04-30T23:59:00.000Z",
+          expiresAt: "2025-04-22T23:59:00.000Z",
         },
         {
           id: "6",

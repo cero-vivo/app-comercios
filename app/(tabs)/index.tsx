@@ -1,7 +1,8 @@
 import { Screen } from '@/components/screen/Screen'
+import { FeedPost } from '@/modules/engagement-channel/components/FeedPost/FeedPost'
 import { useEngagementChannel } from '@/modules/engagement-channel/hooks/useEngagementChannel'
 import React, { useEffect } from 'react'
-import { Text } from 'react-native'
+import { FlatList, Text } from 'react-native'
 
 export default function EngagementChannel() {
 
@@ -11,8 +12,12 @@ export default function EngagementChannel() {
 
 	return (
 		<Screen showLogoHeader>
-			<Text>EngagementChannel {JSON.stringify(posts)}</Text>
-			
+			<FlatList 
+				data={posts}
+				renderItem={({item}) => <FeedPost post={item} />}
+				keyExtractor={(item) => item?.id}
+				contentContainerStyle={{rowGap: 14, padding: 10}}
+			/>
 		</Screen>
 	)
 }
