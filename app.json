@@ -9,12 +9,22 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.AppComercios",
+      "config": {
+        "googleMapsApiKey":  "AIzaSyB4FG-2d3SRkWcgJ0FxedfgEmh9E8Mr9JY",
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.anonymous.AppComercios",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB4FG-2d3SRkWcgJ0FxedfgEmh9E8Mr9JY"
+        }
       }
     },
     "web": {
