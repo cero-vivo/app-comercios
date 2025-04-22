@@ -5,40 +5,40 @@ import { FeedPost as FeedPostType, translateFeedPostTag } from '../../domain/ent
 import { Image } from 'expo-image'
 import { timeAgo, timeUntil } from '@/utils/date-utils'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { textTheme } from '@/styles/texts'
+import { shadowStyle } from '@/styles/shadows'
+import { RFValue } from 'react-native-responsive-fontsize'
 
-export const FeedPost: FC<{ post: FeedPostType }> = (props) => {
-
-	const { post } = props
+export const FeedPost: FC<{ post: FeedPostType }> = ({ post }) => {
 
 	const onOpenExternalLink = () => Linking.openURL(post?.redirectUrl ?? "")
 
-	
 	const isOnlyImage = post?.title == null && post?.description == null && post?.expiresAt == null
 	if (isOnlyImage) {
 		return (
-			<TouchableOpacity onPress={onOpenExternalLink} disabled={post?.redirectUrl == null} style={styles.shadow}>
-				{post.imageUrl && <Image source={post?.imageUrl} style={styles.image} />}
+			<TouchableOpacity onPress={onOpenExternalLink} disabled={!post?.redirectUrl} style={[shadowStyle("primary").small, styles.mainPadding]}>
+				{post.imageUrl && <Image source={post.imageUrl} style={styles.image} />}
 			</TouchableOpacity>
 		)
 	}
 
 	return (
-		<TouchableOpacity onPress={onOpenExternalLink} style={[styles.mainBox, styles.shadow]} disabled={post?.redirectUrl == null}>
+		<TouchableOpacity onPress={onOpenExternalLink} style={[styles.mainBox, shadowStyle("primary").small, styles.mainPadding]} disabled={!post?.redirectUrl}>
 			{post?.expiresAt && (
 				<View style={styles.expirationBox}>
-					<MaterialCommunityIcons name="timer-sand-complete" size={20} color={colors.secondary} />
-					<Text style={styles.text}>{timeUntil(post.expiresAt)}</Text>
+					<MaterialCommunityIcons name="timer-sand-complete" size={RFValue(16)} color={colors.primary} />
+					<Text style={textTheme.timestamp}>{timeUntil(post.expiresAt)}</Text>
 				</View>
 			)}
-			{post?.title && <Text style={styles.title}>{post.title}</Text>}
-			{post.imageUrl && <Image source={post?.imageUrl} style={styles.image} />}
-			{post?.description && <Text style={styles.description}>{post.description}</Text>}
+			{post?.title && <Text style={[textTheme.title, { width: '100%' }]}>{post.title}</Text>}
+			{post.imageUrl && <Image source={post.imageUrl} style={styles.image} />}
+			{post?.description && <Text style={[textTheme.body, { width: '100%' }]}>{post.description}</Text>}
 			{(post?.createdAt || post.tags) && (
 				<View style={styles.bottomRow}>
-					{post?.createdAt && <Text style={styles.text}>{timeAgo(post.createdAt)}</Text>}
+					{post?.createdAt && <Text style={textTheme.timestamp}>{timeAgo(post.createdAt)}</Text>}
 					{post?.tags && (
 						<View style={styles.tagBox}>
-							<Text style={styles.tag}>{translateFeedPostTag(post.tags)}</Text>
+							<Text style={textTheme.tag}>{translateFeedPostTag(post.tags)}</Text>
 						</View>
 					)}
 				</View>
@@ -46,7 +46,12 @@ export const FeedPost: FC<{ post: FeedPostType }> = (props) => {
 		</TouchableOpacity>
 	)
 }
+
+
 const styles = StyleSheet.create({
+	mainPadding: {
+		marginVertical: "3%"
+	},
 	mainBox: {
 		paddingVertical: 10,
 		paddingHorizontal: 20,
@@ -57,20 +62,9 @@ const styles = StyleSheet.create({
 		width: "100%",
 		rowGap: 8
 	},
-	shadow: {
-		shadowColor: colors.primary,
-		shadowOffset: {
-			width: 0,
-			height: 2,
-		},
-		shadowOpacity: 0.45,
-		shadowRadius: 3.84,
-		elevation: 5,
-		marginVertical: 7
-	},
 	expirationBox: {
 		flexDirection: "row",
-		columnGap: 5,
+		columnGap: 2,
 		alignSelf: "flex-start",
 		alignItems: "center"
 	},
@@ -79,22 +73,6 @@ const styles = StyleSheet.create({
 		aspectRatio: 1,
 		objectFit: "contain",
 		borderRadius: 12
-	},
-	text: {
-		color: colors.primary,
-		fontWeight: "600"
-	},
-	title: {
-		width: "100%",
-		fontWeight: "bold",
-		fontSize: 18,
-		color: colors.secondary
-	},
-	description: {
-		width: "100%",
-		fontWeight: "500",
-		fontSize: 14,
-		color: colors.secondary
 	},
 	bottomRow: {
 		flexDirection: "row",
@@ -108,10 +86,6 @@ const styles = StyleSheet.create({
 		borderRadius: 120,
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: "#E7D4C0"
-	},
-	tag: {
-		color: colors.secondary,
-		fontWeight: "800"
+		backgroundColor: colors.primary
 	},
 })

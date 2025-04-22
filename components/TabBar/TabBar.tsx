@@ -1,8 +1,9 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import Entypo from "@expo/vector-icons/Entypo";
 import Foundation from "@expo/vector-icons/Foundation";
 import { colors } from "@/styles/colors";
+import { shadowStyle } from "@/styles/shadows";
 
 export const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
 
@@ -42,8 +43,8 @@ export const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) =>
                         style={{ flex: 1, alignItems: "center" }}
                         key={route.key}
                     >
-                        {route.name === "index" && <Entypo name={"newsletter"} size={45} color={isFocused ? colors.primary : colors.tertiary} />}
-                        {route.name === "About" && <Foundation name={"info"} size={45} color={isFocused ? colors.primary : colors.tertiary} />}
+                        {route.name === "index" && <Entypo name={"newsletter"} size={40} color={isFocused ? colors.primary : colors.tertiary} />}
+                        {route.name === "About" && <Foundation name={"info"} size={40} color={isFocused ? colors.primary : colors.tertiary} />}
                     </TouchableOpacity>
                 );
             })}
@@ -55,21 +56,14 @@ const styles = StyleSheet.create({
     tabBarContainer: {
         flexDirection: "row",
         position: "absolute",
-        bottom: 60,
-        width: "60%",
+        bottom: Platform.OS === "android" ? "3%" : "6%",
+        width: "50%",
         alignSelf:"center",
         backgroundColor: colors.white,
         borderRadius: 120,
-        height: 70,
+        height: 65,
         alignItems: "center",
         justifyContent: "space-between",
-        shadowColor: colors.primary,
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.45,
-        shadowRadius: 10.84,
-        elevation: 5,
+        ...shadowStyle("primary").medium
     }
 })

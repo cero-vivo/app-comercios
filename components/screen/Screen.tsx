@@ -1,19 +1,19 @@
 import { colors } from '@/styles/colors'
 import React from 'react'
-import { SafeAreaView, ScrollView, View, ViewStyle } from 'react-native'
+import { Platform, SafeAreaView, ScrollView, View, ViewStyle } from 'react-native'
 import { LogoHeader } from './LogoHeader'
 
-const topHeader = 60
-
 export const Screen = (props: { children: React.ReactNode, showLogoHeader: boolean, disabledScroll?: boolean, style?: ViewStyle }) => {
+
+	const topHeader = 60 * (Platform.OS === "android" ? 2.5 : 1.5)
 	return (
-		<SafeAreaView style={{ backgroundColor: colors.background }}>
-			{props.showLogoHeader && <LogoHeader top={topHeader} />}
+		<SafeAreaView style={{ backgroundColor: colors.background, flexGrow: 1 }}>
+			{props.showLogoHeader && <LogoHeader top={60} />}
 
 			{props.disabledScroll ?
 				<View style={{
-					paddingTop: props.showLogoHeader ? topHeader * 2 : 0,
-					paddingHorizontal: "7%",
+					paddingTop: props.showLogoHeader ? topHeader : 0,
+					paddingHorizontal: "5%",
 					...props?.style
 				}}>
 					{props.children}
@@ -22,8 +22,8 @@ export const Screen = (props: { children: React.ReactNode, showLogoHeader: boole
 					nestedScrollEnabled
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{
-						paddingTop: props.showLogoHeader ? topHeader * 2 : 0,
-						paddingHorizontal: "5%",
+						paddingTop: props.showLogoHeader ? topHeader : 0,
+						paddingHorizontal: "3%",
 						...props?.style
 					}}
 				>
