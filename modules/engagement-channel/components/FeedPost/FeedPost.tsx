@@ -1,7 +1,7 @@
 import { colors } from '@/styles/colors'
 import React, { FC } from 'react'
 import { Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { FeedPost as FeedPostType, translateFeedPostTag } from '../../domain/entities'
+import { FeedPost as FeedPostType, translateFeedPostTag } from '../../model/entities'
 import { Image } from 'expo-image'
 import { timeAgo, timeUntil } from '@/utils/date-utils'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';

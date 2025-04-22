@@ -1,4 +1,4 @@
-import { EngagementChannelGetPostsRes } from "./engagement-channel-responses";
+import { EngagementChannelGetPostsRes } from "../model/engagement-channel-responses";
 
 export interface EngagementChannelResolverScreen {
     getPostSucess?: (response: EngagementChannelGetPostsRes) => void

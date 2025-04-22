@@ -1,5 +1,5 @@
-import { EngagementChannelResolverScreen } from "../domain/resolvers-screens";
-import { EngagementChannelInfrastructure } from "../infrastructure/engagement-channel-infrastructure";
+import { EngagementChannelInfrastructure } from "../service/engagement-channel-infrastructure";
+import { EngagementChannelResolverScreen } from "./resolvers-screens";
 
 
 

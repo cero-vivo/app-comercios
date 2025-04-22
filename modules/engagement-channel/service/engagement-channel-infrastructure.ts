@@ -1,9 +1,10 @@
-import { EngagementChannelGetPostsRes } from "../domain/engagement-channel-responses";
-import { FeedPost } from "../domain/entities";
-import { EngagementChannelResolverScreen } from "../domain/resolvers-screens";
+import { EngagementChannelActions } from "../model/engagement-channel-actions";
+import { EngagementChannelGetPostsRes } from "../model/engagement-channel-responses";
+import { FeedPost } from "../model/entities";
+import { EngagementChannelResolverScreen } from "../presentation/resolvers-screens";
 
 
-export const EngagementChannelInfrastructure = () => {
+export const EngagementChannelInfrastructure = (): EngagementChannelActions => {
 
   return {
     getPost: async (size: number, page: number): Promise<EngagementChannelGetPostsRes> => {
