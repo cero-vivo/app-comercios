@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		width: "100%",
 		gap: 5,
+		alignItems:"center"
 	},
 	title: {
 		...textTheme.title,
