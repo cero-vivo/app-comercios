@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { colors } from '@/styles/colors'
 import { textTheme } from '@/styles/texts'
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 type OpeningHour = {
 	day: string
@@ -17,9 +17,14 @@ type Props = {
 export const AboutOpeningHours: React.FC<Props> = ({ openingHours }) => {
 	return (
 		<View style={styles.container}>
+			<View style={styles.titleBox}>
+				<AntDesign name="clockcircle" size={18} color={colors.secondary} />
+				<Text style={styles.title}>
+					Horario de atención
+				</Text>
+			</View>
 			{openingHours.map((openingHour, index) => (
 				<View key={index} style={styles.row}>
-					<MaterialCommunityIcons name="clock-outline" size={20} color={colors.primary} />
 					<View style={styles.textBox}>
 						<Text style={styles.day}>{openingHour.day}</Text>
 						<Text style={styles.hours}>
@@ -36,11 +41,8 @@ const styles = StyleSheet.create({
 	container: {
 		width: '100%',
 		paddingHorizontal: 20,
-		marginTop: 20,
 		gap: 12,
-		backgroundColor: colors.secondary,
-		borderRadius: 12,
-		paddingVertical: "5%"
+		borderRadius: 12
 	},
 	row: {
 		flexDirection: 'row',
@@ -48,14 +50,25 @@ const styles = StyleSheet.create({
 		gap: 10,
 	},
 	textBox: {
-		flexDirection: 'column',
+		flexDirection: 'row',
+		justifyContent: "space-between",
+		width: "100%"
+	},
+	titleBox: {
+		flexDirection: 'row',
+		width: "100%",
+		gap: 5,
+	},
+	title: {
+		...textTheme.title,
+		color: colors.secondary,
 	},
 	day: {
 		...textTheme.subtitle,
-		color: colors.tertiary,
+		color: colors.secondary,
 	},
 	hours: {
 		...textTheme.body,
-		color: colors.bodyText,
+		color: colors.secondary,
 	},
 })

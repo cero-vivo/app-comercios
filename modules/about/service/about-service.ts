@@ -22,6 +22,7 @@ export const AboutService = () => {
                 ],
                 contact: {
                     phone: '+54 9 11 6362 1415',
+                    email: 'pan&app@app.com',
                     instagram: '@pan8app',
                     tiktok: '@pan8app',
                 },

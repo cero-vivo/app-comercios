@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
 	container: {
 		width: '100%',
 		paddingHorizontal: 20,
-		marginTop: 20,
 		gap: 12,
         backgroundColor: colors.white,
         borderRadius: 12,

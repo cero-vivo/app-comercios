@@ -15,6 +15,7 @@ export type Business = {
 	imagesUrl?: string[]
 	contact?: {
 		phone?: string
+		email?: string
 		instagram?: string
 		tiktok?: string
 	}

@@ -38,7 +38,7 @@ export const AboutImages = ({ images }: { images: string[] }) => {
 
 
 	return (
-		<View style={{ flex: 1, ...shadowStyle("primary").medium, paddingTop: 14, alignSelf: "center", columnGap: 10 }}>
+		<View style={{ ...shadowStyle("primary").medium, alignSelf: "center" }}>
 			<Carousel
 				ref={ref}
 				width={width}
