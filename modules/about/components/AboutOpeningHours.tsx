@@ -20,7 +20,7 @@ export const AboutOpeningHours: React.FC<Props> = ({ openingHours }) => {
 			<View style={styles.titleBox}>
 				<AntDesign name="clockcircle" size={18} color={colors.secondary} />
 				<Text style={styles.title}>
-					Horario de atención
+					Horarios de atención
 				</Text>
 			</View>
 			{openingHours.map((openingHour, index) => (

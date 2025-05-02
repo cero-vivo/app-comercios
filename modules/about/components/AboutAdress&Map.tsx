@@ -22,6 +22,7 @@ export const AboutAddressAndMap: React.FC<Props> = ({ address, coordinates }) =>
 			</View>
 
 			<MapView
+				provider={"google"}
 				style={styles.map}
 				initialRegion={{
 					latitude: coordinates.lat,
@@ -37,7 +38,7 @@ export const AboutAddressAndMap: React.FC<Props> = ({ address, coordinates }) =>
 			>
 				<Marker
 					coordinate={{ latitude: coordinates.lat, longitude: coordinates.lng }}
-					title="Ubicación"
+					title="Nombre Comercio"
 				/>
 			</MapView>
 		</View>

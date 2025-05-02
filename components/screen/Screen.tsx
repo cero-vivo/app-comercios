@@ -9,7 +9,6 @@ export const Screen = (props: { children: React.ReactNode, showLogoHeader: boole
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flexGrow: 1 }}>
 			{props.showLogoHeader && <LogoHeader top={60} />}
-
 			{props.disabledScroll ?
 				<View style={{
 					paddingTop: props.showLogoHeader ? topHeader : 0,

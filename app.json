@@ -12,7 +12,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.AppComercios",
       "config": {
-        "googleMapsApiKey":  "AIzaSyB4FG-2d3SRkWcgJ0FxedfgEmh9E8Mr9JY",
+        "googleMapsApiKey": "AIzaSyB4FG-2d3SRkWcgJ0FxedfgEmh9E8Mr9JY"
       }
     },
     "android": {
@@ -42,7 +42,16 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font",
+      [
+        "expo-maps",
+        {
+          "requestLocationPermission": "true",
+          "locationPermission": "Allow AppComercios to use your location"
+        }
+      ],
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

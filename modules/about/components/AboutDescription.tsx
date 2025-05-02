@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 	},
 	description: {
 		...textTheme.subtitle,
-		color: colors.bodyText,
+		color: colors.secondary,
 		lineHeight: 30,
 		textAlign: 'left',
 		width: "95%",
