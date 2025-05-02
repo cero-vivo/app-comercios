@@ -1,4 +1,5 @@
-import { HttpResponse } from "@/api/Response"
+
+import { HttpResponse } from "@/http/Response"
 import { Business } from "../model/entities"
 
 export const AboutService = () => {
@@ -9,10 +10,10 @@ export const AboutService = () => {
                 name: 'Pan & App',
                 description:
                     'Desde una esquina tranquila del barrio, Pan & Abrazo nació como una panadería familiar con un solo propósito: devolverle a la mesa el aroma del pan recién horneado y el valor de los pequeños gestos.',
-                address: 'Godoy Cruz 1743, C1414CYK, Cdad. Autónoma de Buenos Aires',
+                address: 'Champagnat 499 Panamericana Ramal Pilar Km 54,5, B1629 Pilar, Provincia de Buenos Aires',
                 coordinates: {
-                    lat: -34.583,
-                    lng: -58.432,
+                    lat: -34.4496111,
+                    lng: -58.9196427
                 },
                 imagesUrl: [
                     "https://images.pexels.com/photos/30677840/pexels-photo-30677840.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
