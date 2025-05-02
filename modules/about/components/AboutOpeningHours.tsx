@@ -3,15 +3,11 @@ import { StyleSheet, Text, View } from 'react-native'
 import { colors } from '@/styles/colors'
 import { textTheme } from '@/styles/texts'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { OpeningHours } from '../model/entities';
 
-type OpeningHour = {
-	day: string
-	from: string
-	to: string
-}
 
 type Props = {
-	openingHours: OpeningHour[]
+	openingHours: OpeningHours[]
 }
 
 export const AboutOpeningHours: React.FC<Props> = ({ openingHours }) => {
@@ -24,12 +20,21 @@ export const AboutOpeningHours: React.FC<Props> = ({ openingHours }) => {
 				</Text>
 			</View>
 			{openingHours.map((openingHour, index) => (
-				<View key={index} style={styles.row}>
+				<View key={openingHour?.day} style={styles.row}>
 					<View style={styles.textBox}>
 						<Text style={styles.day}>{openingHour.day}</Text>
-						<Text style={styles.hours}>
-							{openingHour.from} - {openingHour.to}
-						</Text>
+						<View>
+							{openingHour?.shifts && openingHour?.shifts?.length > 1 ?
+								openingHour?.shifts?.map((shift) => (
+									<Text style={styles.hours} key={shift.from}>
+										{shift.from} - {shift.to}
+									</Text>
+								)) :
+								<Text style={styles.hours}>
+									cerrado
+								</Text>
+							}
+						</View>
 					</View>
 				</View>
 			))}
@@ -52,13 +57,13 @@ const styles = StyleSheet.create({
 	textBox: {
 		flexDirection: 'row',
 		justifyContent: "space-between",
-		width: "100%"
+		width: "100%",
 	},
 	titleBox: {
 		flexDirection: 'row',
 		width: "100%",
 		gap: 5,
-		alignItems:"center"
+		alignItems: "center"
 	},
 	title: {
 		...textTheme.title,

@@ -1,7 +1,10 @@
 export type OpeningHours = {
 	day: string
-	from: string // "06:00"
-	to: string   // "20:00"
+	shifts?: {
+		from?: string // "06:00"
+		to?: string   // "20:00"
+		close?: boolean
+	}[]
 }
 
 export type Business = {

@@ -28,13 +28,46 @@ export const AboutService = () => {
                     tiktok: '@pan8app',
                 },
                 openingHours: [
-                    { day: 'Lunes', from: '07:00', to: '01:50' },
-                    { day: 'Martes', from: '07:00', to: '01:50' },
-                    { day: 'Miercoles', from: '07:00', to: '01:50' },
-                    { day: 'Jueves', from: '07:00', to: '01:50' },
-                    { day: 'Viernes', from: '07:00', to: '01:50' },
-                    { day: 'Sábados', from: '07:00', to: '18:00' },
-                    { day: 'Domingo', from: '07:00', to: '01:50' },
+                    {
+                        day: 'Lunes', shifts: [
+                            { from: '07:00', to: '13:50' },
+                            { from: '16:00', to: '22:00' }
+                        ]
+                    },
+                    {
+                        day: 'Martes', shifts: [
+                                { from: '07:00', to: '13:50' },
+                            { from: '16:00', to: '22:00' }
+                        ]
+                    },
+                    {
+                        day: 'Miercoles', shifts: [
+                                { from: '07:00', to: '13:50' },
+                            { from: '16:00', to: '22:00' }
+                        ]
+                    },
+                    {
+                        day: 'Jueves', shifts: [
+                                { from: '07:00', to: '13:50' },
+                            { from: '16:00', to: '22:00' }
+                        ]
+                    },
+                    {
+                        day: 'Viernes', shifts: [
+                                { from: '07:00', to: '13:50' },
+                            { from: '16:00', to: '22:00' }
+                        ]
+                    },
+                    {
+                        day: 'Sábados', shifts: [
+                            { close: true }
+                        ]
+                    },
+                    {
+                        day: 'Domingo', shifts: [
+                            { close: true }
+                        ]
+                    },
                 ],
                 isOpen: true,
                 closesAt: '19:30',
