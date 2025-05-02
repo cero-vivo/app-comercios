@@ -1,53 +1,67 @@
 import React, { useState } from 'react'
-import { Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet, Pressable } from 'react-native'
+import Animated, { BounceInUp, BounceOutUp, FadeIn, FadeInUp, FadeOut, FadeOutUp, Layout, LightSpeedInRight, LightSpeedOutRight, LinearTransition, SlideInDown, SlideOutDown, StretchInY, ZoomIn, ZoomInDown, ZoomInEasyUp, ZoomOut } from 'react-native-reanimated'
 import { colors } from '@/styles/colors'
-import Animated, { Layout } from 'react-native-reanimated'
 import { textTheme } from '@/styles/texts'
 
 type Props = {
 	text: string
 	maxChars?: number
 }
+
 export const AboutDescription: React.FC<Props> = ({ text, maxChars = 120 }) => {
-	
 	const [expanded, setExpanded] = useState(false)
 
 	const shouldTruncate = text.length > maxChars
-	const displayedText = expanded || !shouldTruncate
-		? text
-		: text.slice(0, maxChars) + '...'
 
-	const toggleExpanded = () => setExpanded((prev) => !prev)
+	const firstPart = shouldTruncate ? `${text.slice(0, maxChars)}${!expanded ? "..." : ""}` : text
+	const remainingPart = shouldTruncate ? text.slice(maxChars)?.trimStart() : ''
+
+	const toggleExpanded = () => setExpanded(prev => !prev)
 
 	return (
-		<Animated.View layout={Layout.springify()} style={styles.container}>
+		<Animated.View style={styles.container}>
 			<Text style={styles.description}>
-				{displayedText}
-				{shouldTruncate && (
-					<Text style={styles.toggle} onPress={toggleExpanded}>
-						{expanded ? ' ver menos' : ' ver más'}
-					</Text>
-				)}
+				{firstPart}
 			</Text>
+
+			{expanded && !!remainingPart && (
+				<Animated.Text
+					entering={FadeInUp.duration(100)}
+					exiting={FadeOutUp.duration(70)}
+					style={styles.description}
+				>
+					{remainingPart}
+				</Animated.Text>
+			)}
+
+			{shouldTruncate && (
+				<Pressable onPress={toggleExpanded}>
+					<Text style={styles.toggle}>
+						{expanded ? 'ver menos' : 'ver más'}
+					</Text>
+				</Pressable>
+			)}
 		</Animated.View>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
-		width: '100%',
-		paddingTop: "6%",
+		paddingTop: '6%',
+		width: '95%',
+		alignSelf: 'center',
 	},
 	description: {
 		...textTheme.subtitle,
 		color: colors.secondary,
 		lineHeight: 30,
 		textAlign: 'left',
-		width: "95%",
-		alignSelf: 'center'
 	},
 	toggle: {
+		...textTheme.title,
 		color: colors.primary,
 		fontWeight: '600',
+		marginTop: 8,
 	},
 })
