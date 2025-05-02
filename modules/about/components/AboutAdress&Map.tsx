@@ -5,7 +5,7 @@ import { colors } from '@/styles/colors'
 import { textTheme } from '@/styles/texts'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import { shadowStyle } from '@/styles/shadows'
-import open, { createMapLink, createOpenLink } from 'react-native-open-maps';
+import open from 'react-native-open-maps';
 import Entypo from '@expo/vector-icons/Entypo';
 
 type Props = {
