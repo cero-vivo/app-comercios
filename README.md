@@ -1,51 +1,64 @@
-# Welcome to your Expo app 👋
+🏪 App de Comercios
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicación adaptable para comercios, enfocada en aumentar las ventas y ganar presencia en la vida diaria de tus clientes.
+✨ Características principales
 
-## Get started
+    📢 Feed + Notificaciones Push
+    Publica novedades, ofertas, eventos o cualquier contenido que quieras comunicar directamente a tus clientes con notificaciones en tiempo real.
 
-1. Install dependencies
+    🧾 Sección "Sobre el Comercio"
+    Una página dedicada para contar la historia, visión y propuesta de valor de tu negocio.
 
-   ```bash
-   npm install
-   ```
+⚙️ Configuración de entorno
 
-2. Start the app
+La app soporta múltiples entornos (dev, qa, production). Para configurar el entorno actual:
 
-   ```bash
-    npx expo start
-   ```
+    Editá el archivo:
 
-In the output, you'll find options to open the app in a
+app/config/config.environment.ts
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+    Seleccioná el entorno que quieras usar:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+export const ENVIRONMENT = 'dev'; // opciones: 'dev', 'qa', 'production'
 
-## Get a fresh project
+    Creá un archivo .env en la raíz del proyecto (o en la carpeta correspondiente si usás múltiples .env) con las variables necesarias, por ejemplo:
 
-When you're ready, run:
+API_URL=https://api.miapp.com
+FIREBASE_API_KEY=tu_clave
 
-```bash
-npm run reset-project
-```
+    Asegurate de que las variables coincidan con las que se espera en el código.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+🎨 Personalización de marca
+1. Paleta de colores
 
-## Learn more
+Modificá los colores en:
 
-To learn more about developing your project with Expo, look at the following resources:
+app/styles/colors.ts
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+2. Reemplazá los logos e íconos
 
-## Join the community
+Sustituí los archivos en assets/images/:
 
-Join our community of developers creating universal apps.
+    splash-icon.png
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-# app-comercios
+    logo.png
+
+    app-icon.png
+
+🧑‍💻 Tecnologías utilizadas
+
+    React Native
+
+    TypeScript
+
+    Firebase (notificaciones push)
+
+    Dotenv (configuración de variables de entorno)
+
+🚧 Próximas mejoras
+
+    Integración con catálogo de productos
+
+    Carrito de compras
+
+    Estadísticas de interacción del cliente
