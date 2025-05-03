@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import { colors } from '@/styles/colors'
 import { textTheme } from '@/styles/texts'
@@ -59,56 +59,46 @@ export const AboutAddressAndMap: React.FC<Props> = ({ address, coordinates }) =>
 				showsUserLocation
 				showsMyLocationButton
 				showsPointsOfInterest
-				tintColor={colors.primary}
 				showsScale
 				showsTraffic
 				showsIndoors
-			>
-				<Marker
-					coordinate={{ latitude: coordinates.lat, longitude: coordinates.lng }}
-					title="Nombre Comercio"
-					onPress={goToAddress}
-					pinColor={colors.primary}
-				/>
-				{/* esquina superior izquerda */}
-				<TouchableOpacity onPress={centerAdressOnMap}
-					style={{
-						position: "absolute",
-						zIndex: 200000000,
-						backgroundColor: colors.tertiary,
-						borderRadius: 100,
-						top: 10,
-						left: 10,
-						...shadowStyle("primary").small,
-						width: ICON_WIDTH * 1.5,
-						height: ICON_WIDTH * 1.5,
-						justifyContent: "center",
-						alignItems: "center"
-					}}>
-					<Entypo name="home" size={ICON_WIDTH} color={colors.primary} />
-				</TouchableOpacity>
+				children={
 
-			</MapView>
-			{/* Centrado y abajo */}
-			{/* 	<TouchableOpacity onPress={centerAdressOnMap}
-				style={{
-					position: "absolute",
-					bottom: -20,
-					left: "50%",
-					transform: [{
-						translateX: (ICON_WIDTH / 3.5) * -1
-					}],
-					zIndex: 200000000,
-					backgroundColor: colors.tertiary,
-					borderRadius: 100,
-					...shadowStyle("primary").small,
-					width: ICON_WIDTH * 1.5,
-					height: ICON_WIDTH * 1.5,
-					justifyContent: "center",
-					alignItems: "center"
-				}}>
-				<Entypo name="home" size={ICON_WIDTH} color={colors.primary} />
-			</TouchableOpacity> */}
+					Platform.OS === "android" ?
+						<Marker
+							coordinate={{ latitude: coordinates.lat, longitude: coordinates.lng }}
+							title="Nombre Comercio"
+							onPress={goToAddress}
+							pinColor={colors.primary}
+						/>
+						:
+						<>
+							<Marker
+								coordinate={{ latitude: coordinates.lat, longitude: coordinates.lng }}
+								title="Nombre Comercio"
+								onPress={goToAddress}
+								pinColor={colors.primary}
+							/>
+							{/* esquina superior izquerda */}
+							<TouchableOpacity onPress={centerAdressOnMap}
+								style={{
+									position: "absolute",
+									zIndex: 200000000,
+									backgroundColor: colors.tertiary,
+									borderRadius: 100,
+									top: 10,
+									left: 10,
+									...shadowStyle("primary").small,
+									width: ICON_WIDTH * 1.5,
+									height: ICON_WIDTH * 1.5,
+									justifyContent: "center",
+									alignItems: "center"
+								}}>
+								<Entypo name="home" size={ICON_WIDTH} color={colors.primary} />
+							</TouchableOpacity>
+						</>
+				}
+			/>
 		</View>
 	)
 }
