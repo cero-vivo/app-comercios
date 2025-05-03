@@ -22,10 +22,12 @@ export const AboutService = () => {
                     "https://images.pexels.com/photos/16402067/pexels-photo-16402067/free-photo-of-comida-azucar-postre-dulce.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 ],
                 contact: {
-                    phone: '+54 9 11 6362 1415',
+                    phone: '+54 9 11 2388',
                     email: 'pan&app@app.com',
-                    instagram: '@pan8app',
-                    tiktok: '@pan8app',
+                    instagram: '@cero.vivo',
+                    tiktok: '@julietagarcia1515',
+                    whatsapp: '+54 9 11 2388',
+                    website: "https://www.luisespinozadev.site"
                 },
                 openingHours: [
                     {

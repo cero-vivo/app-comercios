@@ -5,56 +5,93 @@ import { textTheme } from '@/styles/texts'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 import Entypo from '@expo/vector-icons/Entypo'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
-
-type Contact = {
-	phone?: string
-	email?: string
-	instagram?: string
-	tiktok?: string
-}
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Contact } from '../model/entities'
+import { OverlayLoading } from '@/components/OverlayLoading/OverlayLoading'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 type Props = {
 	contact: Contact
 }
 
+const formatPhoneNumber = (phone: string) =>phone.replace(/[^0-9]/g, '') // elimina espacios, +, etc
+const getSocialUrl = (platform: 'instagram' | 'tiktok', handle: string) => {
+	const cleanHandle = handle.replace('@', '')
+	return platform === 'instagram'
+		? `https://instagram.com/${cleanHandle}`
+		: `https://www.tiktok.com/@${cleanHandle}`
+}
+
 export const AboutContact: React.FC<Props> = ({ contact }) => {
-	const formatPhoneNumber = (phone: string) =>
-		phone.replace(/[^0-9]/g, '') // elimina espacios, +, etc
 
-	const openWhatsApp = (phone: string) => {
-		const cleaned = formatPhoneNumber(phone)
-		const url = `https://wa.me/${cleaned}`
-		Linking.openURL(url).catch(() => Alert.alert('Error', 'No se pudo abrir WhatsApp.'))
-	}
+	const [openingLink, setOpeningLink] = React.useState<boolean>(false)
+	const openLink = async (url: string, errMsg: string) => {
+		try {
+			setOpeningLink(true)
+			await Linking.openURL(url)
+			setOpeningLink(false)
+		} catch (e) {
+			Alert.alert('Error', errMsg)
+			setOpeningLink(false)
+		}
 
-	const openEmail = (email: string) => {
-		const url = `mailto:${email}`
-		Linking.openURL(url).catch(() => Alert.alert('Error', 'No se pudo abrir la app de correo.'))
 	}
-
-	const getSocialUrl = (platform: 'instagram' | 'tiktok', handle: string) => {
-		const cleanHandle = handle.replace('@', '')
-		return platform === 'instagram'
-			? `https://instagram.com/${cleanHandle}`
-			: `https://www.tiktok.com/@${cleanHandle}`
-	}
+	const openCall = () => openLink(`tel:${formatPhoneNumber(contact?.phone || '') || ''}`, 'No se pudo marcar el teléfono.')
+	const openWhatsApp = () => openLink(`https://wa.me/${formatPhoneNumber(contact?.whatsapp || '') || ''}`, 'No se pudo abrir WhatsApp.')
+	const openEmail = () => openLink(`mailto:${contact.email || ""}`, 'No se pudo abrir la app de correo.')
+	const openInstagram = () => openLink(getSocialUrl('instagram', contact.instagram || ''), 'No se pudo abrir Instagram.')
+	const openTiktok = () => openLink(getSocialUrl('tiktok', contact?.tiktok || ""), 'No se pudo abrir Tiktok.')
+	const openWebsite = () => openLink(contact.website || "", 'No se pudo abrir el sitio web.')
 
 	return (
 		<View style={styles.container}>
+			<OverlayLoading isLoading={openingLink} />
 			<View style={styles.titleBox}>
 				<FontAwesome6 name="phone-volume" size={18} color={colors.secondary} />
 				<Text style={styles.title}>Contacto</Text>
 			</View>
 
-			{contact.phone && (
-				<TouchableOpacity onPress={() => openWhatsApp(contact.phone)}>
-					<Text style={styles.contactText}>{contact.phone}</Text>
+			{
+				(contact.phone || contact.whatsapp) ?
+					contact.phone === contact.whatsapp ?
+						(
+							<View style={styles.phoneBox}>
+								<Text style={styles.contactText}>{contact.phone}</Text>
+								<View style={styles.phoneIconsBox}>
+									<TouchableOpacity onPress={openWhatsApp}>
+										<FontAwesome name="whatsapp" size={RFValue(22)} color="black" />
+									</TouchableOpacity>
+									<TouchableOpacity onPress={openCall}>
+										<Entypo name="phone" size={RFValue(22)} color="black" />
+									</TouchableOpacity>
+								</View>
+							</View>
+						) :
+						(
+							<View>
+								{contact.phone && (
+									<TouchableOpacity onPress={openCall}>
+										<Text style={styles.contactText}>{contact.phone}</Text>
+									</TouchableOpacity>
+								)}
+								{contact.whatsapp && (
+									<TouchableOpacity onPress={openWhatsApp}>
+										<Text style={styles.contactText}>{contact.whatsapp}</Text>
+									</TouchableOpacity>
+								)}
+							</View>
+						) : null
+			}
+
+			{contact.email && (
+				<TouchableOpacity onPress={openEmail}>
+					<Text style={styles.contactText}>{contact.email}</Text>
 				</TouchableOpacity>
 			)}
 
-			{contact.email && (
-				<TouchableOpacity onPress={() => openEmail(contact.email)}>
-					<Text style={styles.contactText}>{contact.email}</Text>
+			{contact.website && (
+				<TouchableOpacity onPress={openWebsite}>
+					<Text style={styles.contactText}>{contact.website}</Text>
 				</TouchableOpacity>
 			)}
 
@@ -62,7 +99,7 @@ export const AboutContact: React.FC<Props> = ({ contact }) => {
 				{contact.instagram && (
 					<TouchableOpacity
 						style={styles.singleSocialBox}
-						onPress={() => Linking.openURL(getSocialUrl('instagram', contact?.instagram || ""))}
+						onPress={openInstagram}
 					>
 						<Entypo name="instagram-with-circle" size={24} color={colors.secondary} />
 						<Text style={styles.contactText}>{contact.instagram}</Text>
@@ -71,7 +108,7 @@ export const AboutContact: React.FC<Props> = ({ contact }) => {
 				{contact.tiktok && (
 					<TouchableOpacity
 						style={styles.singleSocialBox}
-						onPress={() => Linking.openURL(getSocialUrl('tiktok', contact?.tiktok || ""))}
+						onPress={openTiktok}
 					>
 						<FontAwesome5 name="tiktok" size={24} color={colors.secondary} />
 						<Text style={styles.contactText}>{contact.tiktok}</Text>
@@ -115,5 +152,14 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		rowGap: 5
+	},
+	phoneBox: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: "space-between",
+	},
+	phoneIconsBox: {
+		flexDirection: "row",
+		gap: 20,
 	}
 })
