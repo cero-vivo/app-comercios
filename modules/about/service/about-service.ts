@@ -9,11 +9,21 @@ export const AboutService = () => {
             const res: Business = {
                 name: 'Pan & App',
                 description:
-                    'Desde una esquina tranquila del barrio, Pan & Abrazo nació como una panadería familiar con un solo propósito: devolverle a la mesa el aroma del pan recién horneado y el valor de los pequeños gestos.',
-                address: 'Champagnat 499 Panamericana Ramal Pilar Km 54,5, B1629 Pilar, Provincia de Buenos Aires',
+                    `La tintorería en los años 60
+
+Durante los años 60, el cuidado textil comercial era realizado por tintorerías independientes, quienes ofrecían servicios de calidad a clientes regulares, cobrando tarifas complejas y poco claras y sin mencionar los plazos de entrega,  excesivamente largos.
+
+La llegada de 5àsec al mercado.
+
+5àsec abrió su primer local en 1968, basado en un concepto genuinamente  innovador: brindar el servicio de tintorería y lavandería con una muy buena relación calidad/precio, una política de precios transparente, utilizando solo 5 tarifas diferentes (de ahí el “5” en  5àsec) y un tiempo de entrega rápido.
+
+Un desarrollo impresionante
+
+Desde entonces, 5àsec ha experimentado un desarrollo rápido y exitoso, como resultado de una oferta comercial lanzada oportunamente en línea con la evolución de los requerimientos de los clientes. Operando hoy en más de 30 países alrededor del mundo, el grupo comenzó su expansión en Francia, abriendo tiendas en todo país antes de instalarse con éxito en los mercados internacionales,  ya sea directamente o a través de Master Franquiciados`,
+                address: 'Av. Juramento 2701, C1428 Cdad. Autónoma de Buenos Aires',
                 coordinates: {
-                    lat: -34.4496111,
-                    lng: -58.9196427
+                    lat: -34.5636136,
+                    lng: -58.4622294
                 },
                 imagesUrl: [
                     "https://www.5asec.com.ar/sites/5asec_ar/files/push/service-push_homepage_ultra_blanco_0.jpg",
@@ -24,8 +34,8 @@ export const AboutService = () => {
                 contact: {
                     phone: '0810 888 5273',
                     email: 'info@5asec.com.ar',
-                    instagram: '@cero.vivo',
-                    tiktok: '@julietagarcia1515',
+                    instagram: '@5asec_juramento',
+                    tiktok: '@5asec',
                     whatsapp: '+54 9 11 2388 1314',
                     website: "https://www.5asec.com.ar/"
                 },
@@ -38,25 +48,25 @@ export const AboutService = () => {
                     },
                     {
                         day: 'Martes', shifts: [
-                                { from: '07:00', to: '13:50' },
+                            { from: '07:00', to: '13:50' },
                             { from: '16:00', to: '22:00' }
                         ]
                     },
                     {
                         day: 'Miercoles', shifts: [
-                                { from: '07:00', to: '13:50' },
+                            { from: '07:00', to: '13:50' },
                             { from: '16:00', to: '22:00' }
                         ]
                     },
                     {
                         day: 'Jueves', shifts: [
-                                { from: '07:00', to: '13:50' },
+                            { from: '07:00', to: '13:50' },
                             { from: '16:00', to: '22:00' }
                         ]
                     },
                     {
                         day: 'Viernes', shifts: [
-                                { from: '07:00', to: '13:50' },
+                            { from: '07:00', to: '13:50' },
                             { from: '16:00', to: '22:00' }
                         ]
                     },
