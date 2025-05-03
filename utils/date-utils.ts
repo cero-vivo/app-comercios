@@ -1,4 +1,5 @@
-import { OpeningHours } from "@/modules/about/model/entities";
+import { OpeningInfo } from "@/components/SnackOpenClose/SnackOpenClose";
+
 
 export function timeAgo(isoDate: string): string {
 	const date = new Date(isoDate);
@@ -55,88 +56,78 @@ export function timeUntil(expireIn: string): string {
 	return result;
 }
 
-const parseHour = (time: string): number => {
-	const [h, m] = time.split(":").map(Number);
-	return h * 60 + m;
-};
+export type OpeningHours = {
+	day: "0" | "1" | "2" | "3" | "4" | "5" | "6"
+	shifts?: {
+		from?: string // "06:00"
+		to?: string   // "20:00"
+		close?: boolean
+	}[]
+}
 
-export const isOpen = (openingHours: OpeningHours[]) => {
-	const now = new Date();
-	const nowMinutes = now.getHours() * 60 + now.getMinutes();
-
-	const jsDay = now.getDay();
-	const dayIndex = (jsDay + 6) % 7;
-
-	const todaySchedule = openingHours[dayIndex];
-
-	const fromMinutes = parseHour(todaySchedule.from);
-	let toMinutes = parseHour(todaySchedule.to);
-	if (toMinutes <= fromMinutes) {
-		toMinutes += 1440;
-	}
-
-	const isOpenToday = nowMinutes >= fromMinutes && nowMinutes < toMinutes;
-
-	const yesterdayIndex = (dayIndex - 1 + 7) % 7;
-	const yesterdaySchedule = openingHours[yesterdayIndex];
-
-	const yFrom = parseHour(yesterdaySchedule.from);
-	let yTo = parseHour(yesterdaySchedule.to);
-	if (yTo <= yFrom) {
-		yTo += 1440;
-	}
-
-	const isOpenFromYesterday = nowMinutes + 1440 >= yFrom && nowMinutes + 1440 < yTo;
-
-	const result = isOpenToday || isOpenFromYesterday;
-
+const parseTime = (timeStr: string, baseDate: Date): Date => {
+	const [hours, minutes] = timeStr.split(":").map(Number);
+	const result = new Date(baseDate);
+	result.setHours(hours, minutes, 0, 0);
 	return result;
-};
-
-const formatTime = (totalSeconds: number): string => {
-	const h = Math.floor(totalSeconds / 3600);
-	const m = Math.floor((totalSeconds % 3600) / 60);
-	const s = totalSeconds % 60;
-	return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-};
-
-export const getTimeUntilChange = (openingHours: OpeningHours[]): string => {
+  };
+  
+  const msToHMS = (ms: number): string => {
+	const totalSeconds = Math.floor(ms / 1000);
+	const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+	const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+	const seconds = String(totalSeconds % 60).padStart(2, "0");
+	return `${hours}:${minutes}:${seconds}`;
+  };
+  
+  export const getOpeningInfo = (openingHours: OpeningHours): OpeningInfo => {
 	const now = new Date();
-	const nowMinutes = now.getHours() * 60 + now.getMinutes();
-	const nowSeconds = now.getSeconds();
-
-	const jsDay = now.getDay();
-	const dayIndex = (jsDay + 6) % 7;
-
-	const parseSchedule = (dayOffset: number) => {
-		const index = (dayIndex + dayOffset + 7) % 7;
-		const schedule = openingHours[index];
-		const from = parseHour(schedule.from) + dayOffset * 1440;
-		let to = parseHour(schedule.to) + dayOffset * 1440;
-		if (to <= from) to += 1440;
-		return { from, to, labelFrom: schedule.from, labelTo: schedule.to };
-	};
-
-	const today = parseSchedule(0);
-	const yesterday = parseSchedule(-1);
-
-	if (nowMinutes >= today.from && nowMinutes < today.to) {
-		const remaining = (today.to - nowMinutes) * 60 - nowSeconds;
-		return `Abierto hasta las ${today.labelTo} hs, cerramos en ${formatTime(remaining)} hs`;
+	const todayIndex = now.getDay().toString(); // "0"–"6"
+	const currentTime = now.getTime();
+  
+	const todaySchedule = openingHours.shifts || [];
+  
+	// Buscar si actualmente está dentro de algún shift
+	for (const shift of todaySchedule) {
+	  if (shift.close || !shift.from || !shift.to) continue;
+  
+	  const from = parseTime(shift.from, now);
+	  const to = parseTime(shift.to, now);
+  
+	  if (currentTime >= from.getTime() && currentTime <= to.getTime()) {
+		return {
+		  isOpen: true,
+		  closesAtTime: shift.to,
+		  closesIn: msToHMS(to.getTime() - currentTime),
+		};
+	  }
 	}
-
-	if (nowMinutes + 1440 >= yesterday.from && nowMinutes + 1440 < yesterday.to) {
-		const remaining = (yesterday.to - (nowMinutes + 1440)) * 60 - nowSeconds;
-		return `Abierto hasta las ${yesterday.labelTo} hs, cerramos en ${formatTime(remaining)} hs`;
-	}
-
+  
+	// Si no está abierto, buscar próxima apertura
 	for (let i = 0; i < 7; i++) {
-		const future = parseSchedule(i);
-		if (nowMinutes < future.from) {
-			const remaining = (future.from - nowMinutes) * 60 - nowSeconds;
-			return `Cerrado hasta las ${future.labelFrom} hs, abrimos en ${formatTime(remaining)} hs`;
+	  const futureIndex = (now.getDay() + i) % 7;
+	  const date = new Date(now);
+	  date.setDate(now.getDate() + i);
+  
+	  const futureShifts = openingHours?.shifts || [];
+  
+	  for (const shift of futureShifts) {
+		if (shift.close || !shift.from) continue;
+  
+		const openDate = parseTime(shift.from, date);
+  
+		if (openDate.getTime() > currentTime) {
+		  return {
+			isOpen: false,
+			opensAtTime: shift.from,
+			opensIn: msToHMS(openDate.getTime() - currentTime),
+		  };
 		}
+	  }
 	}
+  
+	return {
+	  isOpen: false,
+	};
+  };
 
-	return "Cerrado, sin próximas aperturas programadas.";
-};

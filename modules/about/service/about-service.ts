@@ -41,42 +41,43 @@ Desde entonces, 5àsec ha experimentado un desarrollo rápido y exitoso, como re
                 },
                 openingHours: [
                     {
-                        day: 'Lunes', shifts: [
+                        day: '0', shifts: [
                             { from: '07:00', to: '13:50' },
                             { from: '16:00', to: '22:00' }
                         ]
                     },
                     {
-                        day: 'Martes', shifts: [
+                        day: '1', shifts: [
                             { from: '07:00', to: '13:50' },
                             { from: '16:00', to: '22:00' }
                         ]
                     },
                     {
-                        day: 'Miercoles', shifts: [
+                        day: '2', shifts: [
                             { from: '07:00', to: '13:50' },
                             { from: '16:00', to: '22:00' }
                         ]
                     },
                     {
-                        day: 'Jueves', shifts: [
+                        day: '3', shifts: [
                             { from: '07:00', to: '13:50' },
                             { from: '16:00', to: '22:00' }
                         ]
                     },
                     {
-                        day: 'Viernes', shifts: [
+                        day: '4', shifts: [
                             { from: '07:00', to: '13:50' },
                             { from: '16:00', to: '22:00' }
                         ]
                     },
                     {
-                        day: 'Sábados', shifts: [
-                            { close: true }
+                        day: '5', shifts: [
+                            { from: '02:00', to: '13:50' },
+                            { from: '16:00', to: '04:00' }
                         ]
                     },
                     {
-                        day: 'Domingo', shifts: [
+                        day: '6', shifts: [
                             { close: true }
                         ]
                     },

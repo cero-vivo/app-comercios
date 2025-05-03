@@ -10,6 +10,16 @@ type Props = {
 	openingHours: OpeningHours[]
 }
 
+const mapDay = {
+	"0": 'Lunes',
+	"1": 'Martes',
+	"2": 'Miercoles',
+	"3": 'Jueves',
+	"4": 'Viernes',
+	"5": 'Sabado',
+	"6": 'Domingo',
+}
+
 export const AboutOpeningHours: React.FC<Props> = ({ openingHours }) => {
 	return (
 		<View style={styles.container}>
@@ -22,7 +32,7 @@ export const AboutOpeningHours: React.FC<Props> = ({ openingHours }) => {
 			{openingHours.map((openingHour, index) => (
 				<View key={openingHour?.day} style={styles.row}>
 					<View style={styles.textBox}>
-						<Text style={styles.day}>{openingHour.day}</Text>
+					<Text style={styles.day}>{mapDay[openingHour.day] || ""}</Text>
 						<View>
 							{openingHour?.shifts && openingHour?.shifts?.length > 1 ?
 								openingHour?.shifts?.map((shift) => (

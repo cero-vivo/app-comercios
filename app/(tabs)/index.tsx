@@ -11,7 +11,7 @@ export default function EngagementChannel() {
 	useEffect(() => getPosts(), [])
 
 	return (
-		<Screen showLogoHeader style={{marginTop: 0, paddingBottom: "30%"}}>
+		<Screen showLogoHeader showOpenCloseIndicator style={{marginTop: 0, paddingBottom: "30%"}}>
 			<FlashList 
 				data={posts}
 				renderItem={({item}) => <FeedPost post={item} />}

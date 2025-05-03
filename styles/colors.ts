@@ -6,6 +6,8 @@ export const colors = {
 	background: "#F4F1FA",     // Fondo principal
 	bodyText: "#333333",       // Gris oscuro, texto principal
 	opacityModal: "rgba(0, 0, 0, 0.5)", // Fondo semitransparente para modales
+	error: "#E57373",
+	success: "#2E7D6F"
   } as const;
   
   
