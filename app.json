@@ -4,9 +4,9 @@
     "slug": "AppComercios",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon-1.png",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/splash-1.png",
       "resizeMode": "contain",
       "backgroundColor": "#662D91"
     },
@@ -23,7 +23,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-icon-1.png",
         "backgroundColor": "#662D91"
       },
       "package": "com.corazonesestudio.AppComercios",
@@ -32,11 +32,6 @@
           "apiKey": "AIzaSyB4FG-2d3SRkWcgJ0FxedfgEmh9E8Mr9JY"
         }
       }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
       "expo-router",

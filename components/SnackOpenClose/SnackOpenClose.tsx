@@ -36,6 +36,7 @@ export const SnackOpenClose: FC<Props> = (props) => {
     }, [businessData?.openingHours?.length])
 
     const [countdown, setCountdown] = useState<string | null>(null);
+    console.log("🚀 ~ countdown:", countdown)
 
     let interval: any = null;
 
@@ -56,6 +57,12 @@ export const SnackOpenClose: FC<Props> = (props) => {
 
         return () => clearInterval(interval);
     }, [showBanner, info]);
+
+    const closeBanner = () => {
+        clearInterval(interval);
+        setCountdown(null);
+        setShowBanner(false);
+    }
 
     return (
         <View style={props.style}>
@@ -97,13 +104,13 @@ export const SnackOpenClose: FC<Props> = (props) => {
                         {info?.isOpen
                             ? `Abierto hasta las ${info.closesAtTime} hs, cerramos en ${countdown ? countdown+" hs" : "cargando..."}`
                             : info?.opensIn && info.opensAtTime
-                                ? `Cerrado hasta las ${info.opensAtTime} hs, abrimos en ${countdown} hs`
+                                ? `Cerrado hasta las ${info.opensAtTime} hs, abrimos en ${countdown ? countdown+" hs" : "cargando..."}`
                                 : 'Cerrado, no volvemos a abrir esta semana'}
                     </Text>
 
                     <TouchableOpacity
                         style={styles(top).closeButton}
-                        onPress={() => setShowBanner(false)}
+                        onPress={closeBanner}
                     >
                         <AntDesign
                             name="closecircle"

@@ -13,7 +13,7 @@ export const LogoHeader = (props: { top: number }) => {
             contentFit="contain"
             transition={100}
             placeholder={{ blurhash }}
-            source={require("@/assets/images/logo.png")}
+            source={require("@/assets/images/logo-1.png")}
             cachePolicy="memory"
             priority={"high"}
         />
