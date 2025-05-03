@@ -5,6 +5,11 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#662D91"
+    },
     "backgroundColor": "#662D91",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
@@ -35,15 +40,6 @@
     },
     "plugins": [
       "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/logo.png",
-          "imageWidth": 100,
-          "resizeMode": "cover",
-          "backgroundColor": "#662D91"
-        }
-      ],
       "expo-font",
       [
         "expo-maps",
@@ -52,7 +48,19 @@
           "locationPermission": "Allow AppComercios to use your location"
         }
       ],
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#662D91",
+          "image": "./assets/images/splash.png",
+          "dark": {
+            "image": "./assets/images/splash.png",
+            "backgroundColor": "#662D91"
+          },
+          "imageWidth": 200
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

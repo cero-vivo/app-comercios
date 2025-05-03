@@ -12,7 +12,7 @@ export default function About(){
 	const { businessData } = useAboutScreen()
 	
 	return (
-		<Screen showLogoHeader showOpenCloseIndicator style={{paddingBottom: "55%", gap: "2%"}}>
+		<Screen showLogoHeader showOpenCloseIndicator style={{ gap: "2%"}}>
 			<AboutDescription text={businessData?.description || ""} />
 			<AboutImages images={businessData?.imagesUrl|| []} />
 			<AboutOpeningHours openingHours={businessData?.openingHours || []} />

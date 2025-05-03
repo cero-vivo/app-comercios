@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { Platform, SafeAreaView, ScrollView, View, ViewStyle } from 'react-native'
 import { LogoHeader } from './LogoHeader'
 import { SnackOpenClose } from '../SnackOpenClose/SnackOpenClose'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 interface Props {
 	children: React.ReactNode
@@ -15,9 +16,9 @@ interface Props {
 export const topHeader = 60 * (Platform.OS === "android" ? 2.5 : 1.5)
 export const Screen: FC<Props> = (props) => {
 
-	
+	const insets = useSafeAreaInsets();
 	return (
-		<SafeAreaView style={{ backgroundColor: colors.background, flexGrow: 1, position: "relative" }}>
+		<SafeAreaView style={{ backgroundColor: colors.background, flexGrow: 1, position: "relative", paddingBottom: insets.bottom + 200 }}>
 			{props.showLogoHeader && <LogoHeader top={60} />}
 			{props.showOpenCloseIndicator && <SnackOpenClose style={{ zIndex: 100, width: "100%"}} />}
 			{props.disabledScroll ?

@@ -3,7 +3,7 @@ import { colors } from '@/styles/colors';
 import { textTheme } from '@/styles/texts';
 import { getOpeningInfo, hmsToMs, msToHMS } from '@/utils/date-utils';
 import React, { FC, useEffect, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Animated, { SlideInUp, SlideOutUp } from 'react-native-reanimated';
 import { RFValue } from 'react-native-responsive-fontsize';
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -29,21 +29,18 @@ export const SnackOpenClose: FC<Props> = (props) => {
 
     const [showBanner, setShowBanner] = useState(false);
 
-    const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         if (businessData && businessData.openingHours) {
             setInfo(getOpeningInfo(businessData.openingHours[new Date().getDay() - 1] || {}));
-            setShowBanner(true)
         }
     }, [businessData?.openingHours?.length])
 
     const [countdown, setCountdown] = useState<string | null>(null);
+
     let interval: any = null;
 
     useEffect(() => {
         if (!showBanner || !info) return;
-        setLoading(true)
         let ms = hmsToMs(info.isOpen ? info.closesIn || "00:00:00" : info.opensIn || "00:00:00");
         if (ms === undefined) return;
 
@@ -56,7 +53,6 @@ export const SnackOpenClose: FC<Props> = (props) => {
             }
             setCountdown(msToHMS(ms!));
         }, 1000);
-        setLoading(false)
 
         return () => clearInterval(interval);
     }, [showBanner, info]);
@@ -129,7 +125,7 @@ const styles = (insetTop: number) => StyleSheet.create({
         borderRadius: 20,
         position: 'absolute',
         right: '5%',
-        top: insetTop / 3
+        top: Platform.OS === 'ios' ? insetTop - 30: insetTop
     },
     snackMsgBox: {
         minHeight: 50,
@@ -140,6 +136,7 @@ const styles = (insetTop: number) => StyleSheet.create({
         alignSelf: 'center',
         width: '95%',
         position: "absolute",
+        top: Platform.OS === 'ios' ? insetTop - 30: insetTop
     },
     closeButton: {
         position: 'absolute',
