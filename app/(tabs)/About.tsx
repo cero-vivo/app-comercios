@@ -1,5 +1,4 @@
 import { Screen } from '@/components/screen/Screen'
-import { API_URL } from '@/config/config.enviroments'
 import { AboutAddressAndMap } from '@/modules/about/components/AboutAdress&Map'
 import { AboutContact } from '@/modules/about/components/AboutContact'
 import { AboutDescription } from '@/modules/about/components/AboutDescription'
@@ -11,9 +10,6 @@ import React from 'react'
 export default function About(){
 
 	const { businessData } = useAboutScreen()
-
-	const URL = API_URL
-	console.log("🚀 ~ About ~ URL:", URL)
 	
 	return (
 		<Screen showLogoHeader style={{paddingBottom: "55%", gap: "2%"}}>
