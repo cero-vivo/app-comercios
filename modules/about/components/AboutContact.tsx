@@ -59,10 +59,10 @@ export const AboutContact: React.FC<Props> = ({ contact }) => {
 								<Text style={styles.contactText}>{contact.phone}</Text>
 								<View style={styles.phoneIconsBox}>
 									<TouchableOpacity onPress={openWhatsApp}>
-										<FontAwesome name="whatsapp" size={RFValue(22)} color="black" />
+										<FontAwesome name="whatsapp" size={RFValue(22)} color={colors.secondary} />
 									</TouchableOpacity>
 									<TouchableOpacity onPress={openCall}>
-										<Entypo name="phone" size={RFValue(22)} color="black" />
+										<Entypo name="phone" size={RFValue(22)} color={colors.secondary} />
 									</TouchableOpacity>
 								</View>
 							</View>
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		...textTheme.title,
-		color: colors.secondary,
+		color: colors.primary,
 	},
 	contactText: {
 		...textTheme.body,

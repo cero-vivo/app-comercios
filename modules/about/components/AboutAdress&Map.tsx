@@ -41,7 +41,7 @@ export const AboutAddressAndMap: React.FC<Props> = ({ address, coordinates }) =>
 	return (
 		<View style={styles.container}>
 			<TouchableOpacity onPress={goToAddress} style={styles.addressRow}>
-				<MaterialCommunityIcons name="map-marker" size={22} color={colors.primary} />
+				<MaterialCommunityIcons name="map-marker" size={35} color={colors.secondary} />
 				<Text style={styles.address}>{address}</Text>
 			</TouchableOpacity>
 
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
 	},
 	address: {
 		...textTheme.subtitle,
-		color: colors.secondary,
+		color: colors.primary,
 		flex: 1,
 	},
 	map: {

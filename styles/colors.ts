@@ -1,12 +1,14 @@
 export const colors = {
-	primary: "#38737B",
-	secondary: "#1F2937",
-	tertiary: "#D2EDF3",
-	white: "#FFFFFF",
-	background: "#F5F5F5",
-	bodyText: "#6B7280",
-	opacityModal: 'rgba(0, 0, 0, 0.5)',
-  } as const
+	primary: "#662D91",        // Púrpura intenso, utilizado en el logotipo y elementos destacados
+	secondary: "#ED7509",      // Naranja vibrante, empleado en botones y llamadas a la acción
+	tertiary: "#D1C4E9", // Lavanda suave, más saturado y con presencia
+	white: "#FFFFFF",          // Blanco puro, fondo principal del sitio
+	background: "#F4F1FA",     // Fondo principal
+	bodyText: "#333333",       // Gris oscuro, texto principal
+	opacityModal: "rgba(0, 0, 0, 0.5)", // Fondo semitransparente para modales
+  } as const;
+  
+  
   
   export type IColors = typeof colors
   export type ColorTypes = keyof IColors

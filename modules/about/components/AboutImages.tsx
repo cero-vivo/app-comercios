@@ -1,3 +1,4 @@
+import { colors } from "@/styles/colors";
 import { shadowStyle } from "@/styles/shadows";
 import { Image } from "expo-image";
 import * as React from "react";
@@ -61,6 +62,7 @@ export const AboutImages = ({ images }: { images: string[] }) => {
 				dotStyle={{ backgroundColor: "rgba(0,0,0,0.2)", borderRadius: 50 }}
 				containerStyle={{ gap: 5, marginTop: 15 }}
 				onPress={onPressPagination}
+				activeDotStyle={{ backgroundColor: colors.primary }}
 			/>
 		</View>
 	);

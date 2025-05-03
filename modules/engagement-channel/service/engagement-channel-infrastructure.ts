@@ -22,7 +22,7 @@ export const EngagementChannelInfrastructure = (): EngagementChannelActions => {
           id: "2",
           title: undefined,
           description: undefined,
-          imageUrl: "https://images.pexels.com/photos/30677840/pexels-photo-30677840.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          imageUrl: "https://www.5asec.com.ar/sites/5asec_ar/files/push/service-push_homepage_ultra_blanco_0.jpg",
           createdAt: "2025-04-02T11:00:00.000Z",
           tags: undefined,
           redirectUrl: "https://www.instagram.com/p/DIua3oJSYJj/"
@@ -31,7 +31,7 @@ export const EngagementChannelInfrastructure = (): EngagementChannelActions => {
           id: "3",
           title: "¡Pan recién horneado disponible!",
           description: undefined,
-          imageUrl: "https://images.pexels.com/photos/2527676/pexels-photo-2527676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          imageUrl: "https://www.5asec.com.ar/sites/5asec_ar/files/push/service-push_homepage_maxima.jpg",
           createdAt: "2025-04-03T09:00:00.000Z",
         },
         {
@@ -53,7 +53,7 @@ export const EngagementChannelInfrastructure = (): EngagementChannelActions => {
           id: "6",
           title: "Novedades en nuestra panadería",
           description: "Incorporamos opciones sin gluten y veganas.",
-          imageUrl: "https://images.pexels.com/photos/8504385/pexels-photo-8504385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          imageUrl: "https://resizer.iproimg.com/unsafe/1280x/filters:format(webp):quality(85)/https://assets.iprofesional.com/assets/jpg/2025/01/590267.jpg",
           createdAt: "2025-04-06T10:15:00.000Z",
           tags: "news",
         },
@@ -96,7 +96,7 @@ export const EngagementChannelInfrastructure = (): EngagementChannelActions => {
           title: "Pan de campo tradicional",
           description: "Una tradición familiar que se mantiene viva.",
           createdAt: "2025-04-12T11:00:00.000Z",
-          imageUrl: "https://images.pexels.com/photos/16402067/pexels-photo-16402067/free-photo-of-comida-azucar-postre-dulce.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          imageUrl: "https://www.5asec.es/sites/5asec_es/files/cw_block/carte_privilege/carte-privilege.png",
           tags: "history",
         },
         {
@@ -143,7 +143,7 @@ export const EngagementChannelInfrastructure = (): EngagementChannelActions => {
           id: "19",
           title: "¡Gran promoción del día!",
           createdAt: "2025-04-19T11:00:00.000Z",
-          imageUrl: "https://images.pexels.com/photos/31709930/pexels-photo-31709930/free-photo-of-delicioso-pan-de-almendras-casero-en-una-tabla-de-cortar.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          imageUrl: "https://noticiasmercedinas.com/site/wp-content/uploads/2022/04/Flyer1-1-e1650283364179-1024x815.jpg",
           tags: "cupon",
         },
         {

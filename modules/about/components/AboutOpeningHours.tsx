@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		...textTheme.title,
-		color: colors.secondary,
+		color: colors.primary,
 	},
 	day: {
 		...textTheme.subtitle,
