@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router'
 import React from 'react'
 import { TabBar } from '@/components/TabBar/TabBar';
+import { SnackOpenClose } from '@/components/SnackOpenClose/SnackOpenClose';
 
 export default function EngagementChannel() {
 	return (

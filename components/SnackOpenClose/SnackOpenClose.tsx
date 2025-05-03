@@ -17,17 +17,19 @@ export interface OpeningInfo {
     opensIn?: string;
 }
 
-interface Props extends React.ComponentProps<typeof View> { }
-
+interface Props extends React.ComponentProps<typeof View> {
+    bannerIsOpen: boolean, 
+    setBannerIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+ }
 export const SnackOpenClose: FC<Props> = (props) => {
+
+    const { bannerIsOpen, setBannerIsOpen} = props
 
     const { businessData } = useAboutScreen();
 
     const { top } = useSafeAreaInsets()
 
     const [info, setInfo] = useState<OpeningInfo>();
-
-    const [showBanner, setShowBanner] = useState(false);
 
     useEffect(() => {
         if (businessData && businessData.openingHours) {
@@ -41,7 +43,7 @@ export const SnackOpenClose: FC<Props> = (props) => {
     let interval: any = null;
 
     useEffect(() => {
-        if (!showBanner || !info) return;
+        if (!bannerIsOpen || !info) return;
         let ms = hmsToMs(info.isOpen ? info.closesIn || "00:00:00" : info.opensIn || "00:00:00");
         if (ms === undefined) return;
 
@@ -56,12 +58,12 @@ export const SnackOpenClose: FC<Props> = (props) => {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [showBanner, info]);
+    }, [bannerIsOpen, info]);
 
     const closeBanner = () => {
         clearInterval(interval);
         setCountdown(null);
-        setShowBanner(false);
+        setBannerIsOpen(false);
     }
 
     return (
@@ -75,8 +77,8 @@ export const SnackOpenClose: FC<Props> = (props) => {
                     if (businessData && businessData.openingHours) {
                         setInfo(getOpeningInfo(businessData.openingHours[new Date().getDay() - 1] || {}));
                     }
-                    setShowBanner((prev) => !prev)
-                    if(!showBanner) {
+                    setBannerIsOpen((prev) => !prev)
+                    if(!bannerIsOpen) {
                         setCountdown("")
                         clearInterval(interval);
                     }
@@ -92,7 +94,7 @@ export const SnackOpenClose: FC<Props> = (props) => {
                 </Text>
             </TouchableOpacity>
 
-            {showBanner && (
+            {bannerIsOpen && (
                 <Animated.View
                     entering={SlideInUp.duration(400).stiffness(123456)}
                     exiting={SlideOutUp.duration(400)}

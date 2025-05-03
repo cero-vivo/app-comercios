@@ -4,6 +4,8 @@ import { Platform, SafeAreaView, ScrollView, View, ViewStyle } from 'react-nativ
 import { LogoHeader } from './LogoHeader'
 import { SnackOpenClose } from '../SnackOpenClose/SnackOpenClose'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useHomeHeaderUI } from './useHomeHeaderUI'
+import { useFocusEffect } from '@react-navigation/native'
 
 interface Props {
 	children: React.ReactNode
@@ -13,17 +15,29 @@ interface Props {
 	style?: ViewStyle
 }
 
-export const topHeader = 60 * (Platform.OS === "android" ? 2.5 : 1.5)
 export const Screen: FC<Props> = (props) => {
-
+	
 	const insets = useSafeAreaInsets();
+
+	const topHeader = insets.top * (Platform.OS === "android" ? 2.5 : 1.5)
+
+	const headerUI = useHomeHeaderUI();
+
+	useFocusEffect(
+		React.useCallback(() => {
+		  return () => {
+			headerUI.setBannerIsOpen(false);
+		  };
+		}, [])
+	  );
+
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flexGrow: 1, position: "relative", paddingBottom: insets.bottom + 200 }}>
-			{props.showLogoHeader && <LogoHeader top={60} />}
-			{props.showOpenCloseIndicator && <SnackOpenClose style={{ zIndex: 100, width: "100%"}} />}
+			{props.showLogoHeader && <LogoHeader top={insets.top} />}
+			{props.showOpenCloseIndicator && <SnackOpenClose bannerIsOpen={headerUI.bannerIsOpen} setBannerIsOpen={headerUI.setBannerIsOpen} style={{ zIndex: 100, width: "100%"}} />}
 			{props.disabledScroll ?
 				<View style={{
-					paddingTop: props.showLogoHeader ? topHeader : 0,
+					paddingTop: props.showLogoHeader ? topHeader + 200 : 0,
 					paddingHorizontal: "5%",
 					...props?.style
 				}}>
