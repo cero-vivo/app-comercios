@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         height: 130,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.primary,
         borderRadius: 20,
     },
     loadingText: {

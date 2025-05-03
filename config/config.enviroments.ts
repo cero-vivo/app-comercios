@@ -4,6 +4,7 @@ export const ENVIRONMENT = 'dev' as EnvironmentType;
 
 let URL_API = '';
 
+
 switch (ENVIRONMENT) {
   case 'dev':
     URL_API = process.env.EXPO_PUBLIC_DEV_URL_API || "";
@@ -19,3 +20,4 @@ switch (ENVIRONMENT) {
 }
 
 export const API_URL = URL_API;
+export const UI_APP_NAME = "5asec"

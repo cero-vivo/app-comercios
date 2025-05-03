@@ -7,6 +7,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import { shadowStyle } from '@/styles/shadows'
 import open from 'react-native-open-maps';
 import Entypo from '@expo/vector-icons/Entypo';
+import { UI_APP_NAME } from '@/config/config.enviroments'
 
 type Props = {
 	address: string
@@ -67,7 +68,7 @@ export const AboutAddressAndMap: React.FC<Props> = ({ address, coordinates }) =>
 					Platform.OS === "android" ?
 						<Marker
 							coordinate={{ latitude: coordinates.lat, longitude: coordinates.lng }}
-							title="Nombre Comercio"
+							title={UI_APP_NAME}
 							onPress={goToAddress}
 							pinColor={colors.primary}
 						/>
@@ -75,7 +76,7 @@ export const AboutAddressAndMap: React.FC<Props> = ({ address, coordinates }) =>
 						<>
 							<Marker
 								coordinate={{ latitude: coordinates.lat, longitude: coordinates.lng }}
-								title="Nombre Comercio"
+								title={UI_APP_NAME}
 								onPress={goToAddress}
 								pinColor={colors.primary}
 							/>

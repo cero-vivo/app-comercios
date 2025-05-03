@@ -14,7 +14,7 @@ type Props = {
 	contact: Contact
 }
 
-const formatPhoneNumber = (phone: string) =>phone.replace(/[^0-9]/g, '') // elimina espacios, +, etc
+const formatPhoneNumber = (phone: string) => phone.replace(/[^0-9]/g, '') // elimina espacios, +, etc
 const getSocialUrl = (platform: 'instagram' | 'tiktok', handle: string) => {
 	const cleanHandle = handle.replace('@', '')
 	return platform === 'instagram'
@@ -68,15 +68,17 @@ export const AboutContact: React.FC<Props> = ({ contact }) => {
 							</View>
 						) :
 						(
-							<View>
+							<View style={{gap: 5}}>
 								{contact.phone && (
-									<TouchableOpacity onPress={openCall}>
+									<TouchableOpacity onPress={openCall} style={styles.phoneIndividualBox}>
 										<Text style={styles.contactText}>{contact.phone}</Text>
+										<Entypo name="phone" size={RFValue(22)} color={colors.secondary} />
 									</TouchableOpacity>
 								)}
 								{contact.whatsapp && (
-									<TouchableOpacity onPress={openWhatsApp}>
+									<TouchableOpacity onPress={openWhatsApp} style={styles.phoneIndividualBox}>
 										<Text style={styles.contactText}>{contact.whatsapp}</Text>
+										<FontAwesome name="whatsapp" size={RFValue(22)} color={colors.secondary} />
 									</TouchableOpacity>
 								)}
 							</View>
@@ -161,5 +163,10 @@ const styles = StyleSheet.create({
 	phoneIconsBox: {
 		flexDirection: "row",
 		gap: 20,
+	},
+	phoneIndividualBox: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: "space-between",
 	}
 })

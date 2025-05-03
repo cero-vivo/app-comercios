@@ -16,18 +16,18 @@ export const AboutService = () => {
                     lng: -58.9196427
                 },
                 imagesUrl: [
-                    "https://images.pexels.com/photos/30677840/pexels-photo-30677840.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    "https://images.pexels.com/photos/2527676/pexels-photo-2527676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    "https://images.pexels.com/photos/8504385/pexels-photo-8504385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    "https://images.pexels.com/photos/16402067/pexels-photo-16402067/free-photo-of-comida-azucar-postre-dulce.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    "https://www.5asec.com.ar/sites/5asec_ar/files/push/service-push_homepage_ultra_blanco_0.jpg",
+                    "https://www.5asec.com.ar/sites/5asec_ar/files/push/service-push_homepage_maxima.jpg",
+                    "https://resizer.iproimg.com/unsafe/1280x/filters:format(webp):quality(85)/https://assets.iprofesional.com/assets/jpg/2025/01/590267.jpg",
+                    "https://www.5asec.es/sites/5asec_es/files/cw_block/carte_privilege/carte-privilege.png"
                 ],
                 contact: {
-                    phone: '+54 9 11 2388',
-                    email: 'pan&app@app.com',
+                    phone: '0810 888 5273',
+                    email: 'info@5asec.com.ar',
                     instagram: '@cero.vivo',
                     tiktok: '@julietagarcia1515',
-                    whatsapp: '+54 9 11 2388',
-                    website: "https://www.luisespinozadev.site"
+                    whatsapp: '+54 9 11 2388 1314',
+                    website: "https://www.5asec.com.ar/"
                 },
                 openingHours: [
                     {
