@@ -70,64 +70,69 @@ const parseTime = (timeStr: string, baseDate: Date): Date => {
 	const result = new Date(baseDate);
 	result.setHours(hours, minutes, 0, 0);
 	return result;
-  };
-  
-  const msToHMS = (ms: number): string => {
+};
+
+export const msToHMS = (ms: number): string => {
 	const totalSeconds = Math.floor(ms / 1000);
 	const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
 	const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
 	const seconds = String(totalSeconds % 60).padStart(2, "0");
 	return `${hours}:${minutes}:${seconds}`;
-  };
-  
-  export const getOpeningInfo = (openingHours: OpeningHours): OpeningInfo => {
+};
+
+export const getOpeningInfo = (openingHours: OpeningHours): OpeningInfo => {
 	const now = new Date();
 	const todayIndex = now.getDay().toString(); // "0"–"6"
 	const currentTime = now.getTime();
-  
+
 	const todaySchedule = openingHours.shifts || [];
-  
+
 	// Buscar si actualmente está dentro de algún shift
 	for (const shift of todaySchedule) {
-	  if (shift.close || !shift.from || !shift.to) continue;
-  
-	  const from = parseTime(shift.from, now);
-	  const to = parseTime(shift.to, now);
-  
-	  if (currentTime >= from.getTime() && currentTime <= to.getTime()) {
-		return {
-		  isOpen: true,
-		  closesAtTime: shift.to,
-		  closesIn: msToHMS(to.getTime() - currentTime),
-		};
-	  }
+		if (shift.close || !shift.from || !shift.to) continue;
+
+		const from = parseTime(shift.from, now);
+		const to = parseTime(shift.to, now);
+
+		if (currentTime >= from.getTime() && currentTime <= to.getTime()) {
+			return {
+				isOpen: true,
+				closesAtTime: shift.to,
+				closesIn: msToHMS(to.getTime() - currentTime),
+			};
+		}
 	}
-  
+
 	// Si no está abierto, buscar próxima apertura
 	for (let i = 0; i < 7; i++) {
-	  const futureIndex = (now.getDay() + i) % 7;
-	  const date = new Date(now);
-	  date.setDate(now.getDate() + i);
-  
-	  const futureShifts = openingHours?.shifts || [];
-  
-	  for (const shift of futureShifts) {
-		if (shift.close || !shift.from) continue;
-  
-		const openDate = parseTime(shift.from, date);
-  
-		if (openDate.getTime() > currentTime) {
-		  return {
-			isOpen: false,
-			opensAtTime: shift.from,
-			opensIn: msToHMS(openDate.getTime() - currentTime),
-		  };
+		const futureIndex = (now.getDay() + i) % 7;
+		const date = new Date(now);
+		date.setDate(now.getDate() + i);
+
+		const futureShifts = openingHours?.shifts || [];
+
+		for (const shift of futureShifts) {
+			if (shift.close || !shift.from) continue;
+
+			const openDate = parseTime(shift.from, date);
+
+			if (openDate.getTime() > currentTime) {
+				return {
+					isOpen: false,
+					opensAtTime: shift.from,
+					opensIn: msToHMS(openDate.getTime() - currentTime),
+				};
+			}
 		}
-	  }
 	}
-  
+
 	return {
-	  isOpen: false,
+		isOpen: false,
 	};
-  };
+};
+
+export const hmsToMs = (hms: string): number => {
+	const [hours, minutes, seconds] = hms.split(':').map(Number);
+	return ((hours * 60 * 60) + (minutes * 60) + seconds) * 1000;
+};
 

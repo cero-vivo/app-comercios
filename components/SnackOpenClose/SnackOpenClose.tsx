@@ -1,7 +1,7 @@
 import { useAboutScreen } from '@/modules/about/hooks/useAboutScreen';
 import { colors } from '@/styles/colors';
 import { textTheme } from '@/styles/texts';
-import { getOpeningInfo } from '@/utils/date-utils';
+import { getOpeningInfo, hmsToMs, msToHMS } from '@/utils/date-utils';
 import React, { FC, useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Animated, { SlideInUp, SlideOutUp } from 'react-native-reanimated';
@@ -15,7 +15,7 @@ export interface OpeningInfo {
     closesIn?: string;
     opensAtTime?: string;
     opensIn?: string;
-  }
+}
 
 interface Props extends React.ComponentProps<typeof View> { }
 
@@ -28,12 +28,38 @@ export const SnackOpenClose: FC<Props> = (props) => {
     const [info, setInfo] = useState<OpeningInfo>();
 
     const [showBanner, setShowBanner] = useState(false);
+
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         if (businessData && businessData.openingHours) {
             setInfo(getOpeningInfo(businessData.openingHours[new Date().getDay() - 1] || {}));
+            setShowBanner(true)
         }
     }, [businessData?.openingHours?.length])
 
+    const [countdown, setCountdown] = useState<string | null>(null);
+    let interval: any = null;
+
+    useEffect(() => {
+        if (!showBanner || !info) return;
+        setLoading(true)
+        let ms = hmsToMs(info.isOpen ? info.closesIn || "00:00:00" : info.opensIn || "00:00:00");
+        if (ms === undefined) return;
+
+        interval = setInterval(() => {
+            ms! -= 1000;
+            if (ms! <= 0) {
+                clearInterval(interval);
+                setCountdown("00:00:00");
+                return;
+            }
+            setCountdown(msToHMS(ms!));
+        }, 1000);
+        setLoading(false)
+
+        return () => clearInterval(interval);
+    }, [showBanner, info]);
 
     return (
         <View style={props.style}>
@@ -47,6 +73,10 @@ export const SnackOpenClose: FC<Props> = (props) => {
                         setInfo(getOpeningInfo(businessData.openingHours[new Date().getDay() - 1] || {}));
                     }
                     setShowBanner((prev) => !prev)
+                    if(!showBanner) {
+                        setCountdown("")
+                        clearInterval(interval);
+                    }
                 }}
             >
                 <Text
@@ -69,9 +99,9 @@ export const SnackOpenClose: FC<Props> = (props) => {
                     ]}>
                     <Text style={[textTheme.body, { color: colors.white, paddingRight: 50 }]}>
                         {info?.isOpen
-                            ? `Abierto hasta las ${info.closesAtTime} hs, cerramos en ${info.closesIn} hs`
+                            ? `Abierto hasta las ${info.closesAtTime} hs, cerramos en ${countdown ? countdown+" hs" : "cargando..."}`
                             : info?.opensIn && info.opensAtTime
-                                ? `Cerrado hasta las ${info.opensAtTime} hs, abrimos en ${info.opensIn} hs`
+                                ? `Cerrado hasta las ${info.opensAtTime} hs, abrimos en ${countdown} hs`
                                 : 'Cerrado, no volvemos a abrir esta semana'}
                     </Text>
 
