@@ -32,12 +32,11 @@ export const Screen: FC<Props> = (props) => {
 	  );
 
 	return (
-		<SafeAreaView style={{ backgroundColor: colors.background, flexGrow: 1, position: "relative", paddingBottom: insets.bottom + 200 }}>
+		<SafeAreaView style={{ backgroundColor: colors.background, flexGrow: 1, position: "relative"}}>
 			{props.showLogoHeader && <LogoHeader top={insets.top} />}
 			{props.showOpenCloseIndicator && <SnackOpenClose bannerIsOpen={headerUI.bannerIsOpen} setBannerIsOpen={headerUI.setBannerIsOpen} style={{ zIndex: 100, width: "100%"}} />}
 			{props.disabledScroll ?
 				<View style={{
-					paddingTop: props.showLogoHeader ? topHeader + 200 : 0,
 					paddingHorizontal: "5%",
 					...props?.style
 				}}>
@@ -47,7 +46,6 @@ export const Screen: FC<Props> = (props) => {
 					nestedScrollEnabled
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{
-						paddingTop: props.showLogoHeader ? topHeader : 0,
 						paddingHorizontal: "3%",
 						...props?.style
 					}}

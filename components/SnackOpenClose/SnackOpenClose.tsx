@@ -38,7 +38,6 @@ export const SnackOpenClose: FC<Props> = (props) => {
     }, [businessData?.openingHours?.length])
 
     const [countdown, setCountdown] = useState<string | null>(null);
-    console.log("🚀 ~ countdown:", countdown)
 
     let interval: any = null;
 

@@ -48,7 +48,6 @@ export const AboutDescription: React.FC<Props> = ({ text, maxChars = 120 }) => {
 
 const styles = StyleSheet.create({
 	container: {
-		paddingTop: '6%',
 		width: '95%',
 		alignSelf: 'center',
 	},
