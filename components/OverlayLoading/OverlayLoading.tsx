@@ -21,7 +21,7 @@ export const OverlayLoading: React.FC<OverlayLoadingProps> = (props) => {
                     <View style={styles.loadingContainer}>
                         <ActivityIndicator size="large" color={colors.tertiary} />
                         <Text style={styles.loadingText}>
-                        "Cargando..."
+                        Cargando...
                         </Text>
                     </View>
                 </View>
