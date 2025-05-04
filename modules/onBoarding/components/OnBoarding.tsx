@@ -11,6 +11,7 @@ import { Image } from 'expo-image'
 import { shadowStyle } from '@/styles/shadows'
 import { textTheme } from '@/styles/texts'
 import { RFValue } from 'react-native-responsive-fontsize'
+import { AppButton } from '@/components/Button/AppButton'
 
 const blurhash =
     '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
@@ -43,8 +44,8 @@ export const OnBoarding = () => {
     const presenter = onBoardingPresenter(screenHandler)
 
     const slices = useMemo(() => {
-        return onBoardingData.map((item) => {
-            console.log("🚀 ~ returnonBoardingData.map ~ item:", item)
+        return onBoardingData.map((item, index) => {
+            const isLast = index === onBoardingData.length - 1
             return (
                 <View style={styles(paddings).slice} key={item.title}>
                     <Image
@@ -58,6 +59,7 @@ export const OnBoarding = () => {
                     />
                     <Text style={styles(paddings).title}>{item.title}</Text>
                     <Text style={styles(paddings).description}>{item.description}</Text>
+                    {isLast && <AppButton text="Ingresar a la app" style={{marginTop: 20, maxWidth: "70%", alignSelf: "center"}}/>}
                 </View>
             )
         })
