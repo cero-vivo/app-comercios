@@ -1,5 +1,5 @@
 export const colors = {
-	primary: "#662D91",        // Púrpura intenso, utilizado en el logotipo y elementos destacados
+	primary: "#3B038A",        // Púrpura intenso, utilizado en el logotipo y elementos destacados
 	secondary: "#ED7509",      // Naranja vibrante, empleado en botones y llamadas a la acción
 	tertiary: "#D1C4E9", // Lavanda suave, más saturado y con presencia
 	white: "#FFFFFF",          // Blanco puro, fondo principal del sitio

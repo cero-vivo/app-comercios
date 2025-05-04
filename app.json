@@ -8,9 +8,9 @@
     "splash": {
       "image": "./assets/images/splash-1.png",
       "resizeMode": "contain",
-      "backgroundColor": "#662D91"
+      "backgroundColor": "#3B038A"
     },
-    "backgroundColor": "#662D91",
+    "backgroundColor": "#3B038A",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -24,7 +24,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon-1.png",
-        "backgroundColor": "#662D91"
+        "backgroundColor": "#3B038A"
       },
       "package": "com.corazonesestudio.AppComercios",
       "config": {
@@ -47,11 +47,11 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#662D91",
+          "backgroundColor": "#3B038A",
           "image": "./assets/images/splash.png",
           "dark": {
             "image": "./assets/images/splash.png",
-            "backgroundColor": "#662D91"
+            "backgroundColor": "#3B038A"
           },
           "imageWidth": 200
         }
