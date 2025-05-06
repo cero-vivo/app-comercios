@@ -1,28 +1,29 @@
 import { useInitApp } from "@/modules/init/useInitApp";
-import { Stack } from "expo-router";
+import { useAppStore } from "@/store/app-store";
+import { Stack, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import * as SplashScreen from 'expo-splash-screen';
+import { View } from "react-native";
+import { BracnhSelectorModal } from "@/components/modals/BranchSelector/BranchSelectorModal";
+
+// Keep the splash screen visible while we fetch resources
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+	const { checkOnBoardingState } = useInitApp()
+
 	const [appIsReady, setAppIsReady] = useState(false);
-	const [displayOnboarding, setDisplayOnboarding] = useState(false);
-
-	console.log("🚀 ~ RootLayout ~ displayOnboarding:", displayOnboarding);
-
-	// Asegúrate de que el nombre sea correcto
-	const { showOnboarding } = useInitApp();
+	const showOnboarding = useAppStore(state => state.showOnboarding)
+	const router = useRouter();
 
 	useEffect(() => {
 		async function prepare() {
 			try {
-				// Aquí corriges el nombre de la función para coincidir con la exportada
-				const showOnboardingResult = await showOnboarding();
-				console.log("🚀 ~ prepare ~ showOnboardingResult:", showOnboardingResult)
-				setDisplayOnboarding(showOnboardingResult);
+				await checkOnBoardingState()
 			} catch (e) {
 				console.warn(e);
 			} finally {
-				// Tell the application to render
 				setAppIsReady(true);
 			}
 		}
@@ -30,15 +31,34 @@ export default function RootLayout() {
 		prepare();
 	}, []);
 
+	useEffect(() => {
+		if (appIsReady && showOnboarding !== undefined) {
+			if (showOnboarding) {
+				router.replace("/onboarding");
+			} else {
+				router.replace("/(tabs)");
+			}
+		}
+	}, [appIsReady, showOnboarding]);
+
+	const onLayoutRootView = useCallback(() => {
+		if (appIsReady) {
+			SplashScreen.hideAsync();
+		}
+	}, [appIsReady]);
+
+	if (!appIsReady || showOnboarding === undefined) {
+		return null;
+	}
+
 	return appIsReady && (
-		<>
+		<View onLayout={onLayoutRootView} style={{ flexGrow: 1 }}>
 			<Stack>
-				{displayOnboarding ?
-					<Stack.Screen name="index" options={{ headerShown: false }} /> :
-					<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-				}
+				<Stack.Screen name="onboarding/index" options={{ headerShown: false }} />
+				<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 			</Stack>
 			<StatusBar style="dark" />
-		</>
+			<BracnhSelectorModal />
+		</View>
 	);
 }

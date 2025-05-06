@@ -10,10 +10,10 @@ interface AppButtonProps extends TouchableOpacityProps {
 
 export const AppButton: FC<AppButtonProps> = (props) => {
 
-    const { style, text } = props
+    const { style, text, onPress } = props
 
     return (
-        <TouchableOpacity style={[styles.button,style]}>
+        <TouchableOpacity style={[styles.button,style]} onPress={onPress}>
             {text && <Text style={[textTheme.title, {color: colors.background}]}>{text}</Text>}
         </TouchableOpacity>
     )

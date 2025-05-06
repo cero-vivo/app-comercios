@@ -12,6 +12,8 @@ import { shadowStyle } from '@/styles/shadows'
 import { textTheme } from '@/styles/texts'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { AppButton } from '@/components/Button/AppButton'
+import { useRouter } from 'expo-router'
+import { useAppStore } from '@/store/app-store'
 
 const blurhash =
     '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
@@ -24,9 +26,12 @@ export const OnBoarding = () => {
 
     const paddings = usePaddings()
 
+    const router = useRouter();
+
+    const toggleBranchSelectorModal = useAppStore(state => state.toggleBranchSelectorModal)
+
     const screenHandler: OnBoardingActionsResolver = {
         getOnBoardingDataSuccess: (data) => {
-            console.log(data)
             setHttpState("success")
             setOnBoardingData(data.data)
         },
@@ -59,7 +64,7 @@ export const OnBoarding = () => {
                     />
                     <Text style={styles(paddings).title}>{item.title}</Text>
                     <Text style={styles(paddings).description}>{item.description}</Text>
-                    {isLast && <AppButton text="Ingresar a la app" style={{marginTop: 20, maxWidth: "70%", alignSelf: "center"}}/>}
+                    {isLast && <AppButton text="Ingresar a la app" style={{marginTop: 20, maxWidth: "70%", alignSelf: "center"}} onPress={toggleBranchSelectorModal}/>}
                 </View>
             )
         })
