@@ -1,79 +1,80 @@
-#### Collection: users
+#### Users
 ```typescript
 export interface User {
-  _id: string; // deviceId
-  savedPosts: string[]; // Array of postIds NOT STORED IN DB
+  _id: string // deviceId
+  savedPosts: string[] // Array of postIds NOT STORED IN DB
 }
 ```
-
-
-#### Collection: posts
+#### Posts
 ```typescript
 export interface Post {
-  _id: string; // postId
-  title: string;
-  imageUrl: string;
-  description: string;
-  expiryTime: string; // ISO string format
-  hashtags: string[];
-  interactiveLinks: {
-    label: string;
-    url: string;
-  }[];
+  _id: string // postId
+  title: string
+  imageUrl: string
+  description: string
+  expiryTime: string // ISO string format
+  hashtags: string[]
+  interactiveLinks: { label: string,url: string }[]
   origin: {
-    type: 'local' | 'admin'; // Origin type (could be local or admin)
-    name: string;
-    avatarUrl: string;
-  };
+    type: 'local' | 'admin' // Origin type (could be local or admin)
+    name: string
+    avatarUrl: string
+  }
   timestamp: {
-    show: boolean;
-    value: string; // ISO string format
-  };
-}
-````
-#### Collection: notifications
-```typescript
-export interface Notification {
-  _id: string; // notificationId
-  message: string;
-  linkedPostId?: string; // Optional link to post
-  scheduledAt: string; // ISO string format
-  sentBy: {
-    adminId: string;
-    role: 'local' | 'franchise' | 'group' | 'system';
-  };
-  sendTo: string | 'all'; // localId or 'all' to send to all users
+    show: boolean
+    value: string // ISO string format
+  }
 }
 ```
 
-#### Collection: admins
+#### Notifications
+```typescript
+export interface Notification {
+  _id: string // notificationId
+  message: string
+  linkedPostId?: string // Optional link to post
+  scheduledAt: string // ISO string format
+  sentBy: {
+    adminId: string
+    role: 'local' | 'admin' | 'system'
+  }
+  sendTo: string | 'all' // localId or 'all' to send to all users
+}
+```
+
+#### Admins
 ```typescript
 export interface Admin {
-  _id: string; // adminId
-  role: 'local' | 'franchise' | 'group' | 'system'; // Role of the admin
-  managesEntityId: string; // localId, franchiseId, or groupId
+  _id: string // adminId
+  role: 'local' | 'admin' | 'system' // Role of the admin
+  managesEntityId: string // localId, franchiseId, or groupId
 }
-````
+```
 
-#### Collection: locals
+#### Locals
 ```typescript
 export interface Local {
-  _id: string; // localId
-  name: string;
-  logoUrl: string;
-  description: string;
+  _id: string // localId
+  name: string
+  logoUrl: string
+  description: string
   openingHours: {
-    mon: { from: string; to: string }[];
-    sat: { from: string; to: string }[];
-  };
+    1?: { from: string to: string }[]
+    2?: { from: string to: string }[]
+    3?: { from: string to: string }[]
+    4?: { from: string to: string }[]
+    5?: { from: string to: string }[]
+    6?: { from: string to: string }[]
+    7?: { from: string to: string }[]
+  }
   contact: {
-    phone: string;
-    email: string;
-    website: string;
+    phone: string
+    email: string
+    website: string
     social: {
-      instagram: string;
-      facebook: string;
-    };
-  };
+      instagram: string
+      facebook: string
+    }
+  }
 }
-````
+```
