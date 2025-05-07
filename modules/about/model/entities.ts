@@ -3,7 +3,6 @@ export type OpeningHours = {
 	shifts?: {
 		from?: string // "06:00"
 		to?: string   // "20:00"
-		close?: boolean
 	}[]
 }
 

@@ -61,7 +61,6 @@ export type OpeningHours = {
 	shifts?: {
 		from?: string // "06:00"
 		to?: string   // "20:00"
-		close?: boolean
 	}[]
 }
 
@@ -80,16 +79,15 @@ export const msToHMS = (ms: number): string => {
 	return `${hours}:${minutes}:${seconds}`;
 };
 
-export const getOpeningInfo = (openingHours: OpeningHours): OpeningInfo => {
+export const getOpeningInfo = (today: OpeningHours, week: OpeningHours[]): OpeningInfo => {
 	const now = new Date();
-	const todayIndex = now.getDay().toString(); // "0"–"6"
 	const currentTime = now.getTime();
 
-	const todaySchedule = openingHours.shifts || [];
+	const todaySchedule = today.shifts || [];
 
-	// Buscar si actualmente está dentro de algún shift
+	// Buscar si actualmente está dentro de algún turno
 	for (const shift of todaySchedule) {
-		if (shift.close || !shift.from || !shift.to) continue;
+		if (!shift.from || !shift.to) continue;
 
 		const from = parseTime(shift.from, now);
 		const to = parseTime(shift.to, now);
@@ -103,26 +101,41 @@ export const getOpeningInfo = (openingHours: OpeningHours): OpeningInfo => {
 		}
 	}
 
-	// Si no está abierto, buscar próxima apertura
-	for (let i = 0; i < 7; i++) {
-		const futureIndex = (now.getDay() + i) % 7;
-		const date = new Date(now);
-		date.setDate(now.getDate() + i);
+	// Si no está abierto, buscar la próxima apertura
+	let hrsAfter = 0;
+	for (let i = now.getDay(); i < 7; i++) {  // Aseguramos que recorremos toda la semana
+		const dayIndex = i;  // Volver al día 0 si llegamos al final de la semana
 
-		const futureShifts = openingHours?.shifts || [];
+		const futureShifts = week[dayIndex]?.shifts || [];
 
+		let closestShift = null;
+		let closestOpenTime = Infinity;  // Usamos un valor grande para comparar
+
+		// Buscar el turno más cercano en el futuro
 		for (const shift of futureShifts) {
-			if (shift.close || !shift.from) continue;
+			if (!shift.from) continue;
 
-			const openDate = parseTime(shift.from, date);
+			const openDate = parseTime(shift.from, now);
 
-			if (openDate.getTime() > currentTime) {
-				return {
-					isOpen: false,
-					opensAtTime: shift.from,
-					opensIn: msToHMS(openDate.getTime() - currentTime),
-				};
+			// Verificamos si el turno es posterior al tiempo actual
+			if (openDate.getTime() > currentTime && openDate.getTime() < closestOpenTime) {
+				closestOpenTime = openDate.getTime();
+				closestShift = shift;
 			}
+		}
+		
+
+
+		// Si encontramos un turno futuro, devolver la información
+		if (closestShift) {
+			const openDate = parseTime(closestShift.from, now);
+			return {
+				isOpen: false,
+				opensAtTime: closestShift.from,
+				opensIn: msToHMS((openDate.getTime() - currentTime) + (hrsAfter* 60*60*1000)),
+			};
+		} else {
+			hrsAfter += 24;
 		}
 	}
 
@@ -130,6 +143,7 @@ export const getOpeningInfo = (openingHours: OpeningHours): OpeningInfo => {
 		isOpen: false,
 	};
 };
+
 
 export const hmsToMs = (hms: string): number => {
 	const [hours, minutes, seconds] = hms.split(':').map(Number);

@@ -60,7 +60,7 @@ Desde entonces, 5àsec ha experimentado un desarrollo rápido y exitoso, como re
                     },
                     {
                         day: '3', shifts: [
-                            { from: '07:00', to: '13:50' },
+
                             { from: '16:00', to: '22:00' }
                         ]
                     },
@@ -78,7 +78,6 @@ Desde entonces, 5àsec ha experimentado un desarrollo rápido y exitoso, como re
                     },
                     {
                         day: '6', shifts: [
-                            { close: true }
                         ]
                     },
                 ],

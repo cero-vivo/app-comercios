@@ -31,9 +31,10 @@ export const SnackOpenClose: FC<Props> = (props) => {
 
     const [info, setInfo] = useState<OpeningInfo>();
 
+
     useEffect(() => {
         if (businessData && businessData.openingHours) {
-            setInfo(getOpeningInfo(businessData.openingHours[new Date().getDay() - 1] || {}));
+            setInfo(getOpeningInfo(businessData.openingHours[new Date().getDay() - 1] || {}, businessData.openingHours));
         }
     }, [businessData?.openingHours?.length])
 
@@ -74,7 +75,7 @@ export const SnackOpenClose: FC<Props> = (props) => {
                 ]}
                 onPress={() => {
                     if (businessData && businessData.openingHours) {
-                        setInfo(getOpeningInfo(businessData.openingHours[new Date().getDay() - 1] || {}));
+                        setInfo(getOpeningInfo(businessData.openingHours[new Date().getDay() - 1] || {}, businessData.openingHours));
                     }
                     setBannerIsOpen((prev) => !prev)
                     if(!bannerIsOpen) {

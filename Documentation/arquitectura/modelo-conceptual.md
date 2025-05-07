@@ -51,8 +51,18 @@ export interface Admin {
 }
 ```
 
+
 #### Locals
 ```typescript
+export interface Contact {
+  phone: string
+  email: string
+  website: string
+  social: {
+    instagram: string
+    facebook: string
+  }
+}
 export interface Local {
   _id: string // localId
   name: string
@@ -67,14 +77,6 @@ export interface Local {
     6?: { from: string to: string }[]
     7?: { from: string to: string }[]
   }
-  contact: {
-    phone: string
-    email: string
-    website: string
-    social: {
-      instagram: string
-      facebook: string
-    }
-  }
+  contact: Contact
 }
 ```
