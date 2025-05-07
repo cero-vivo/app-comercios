@@ -1,70 +1,79 @@
-NO SQL
-
-// Collection: users
-{
-  "_id": "<deviceId>",
-  "savedPosts": ["<postId1>", "<postId2>", ...]
+#### Collection: users
+```typescript
+export interface User {
+  _id: string; // deviceId
+  savedPosts: string[]; // Array of postIds NOT STORED IN DB
 }
+```
 
-// Collection: posts
-{
-  "_id": "<postId>",
-  "title": "Summer Sale",
-  "imageUrl": "https://...",
-  "description": "50% off...",
-  "expiryTime": "2025-05-10T18:00:00Z",
-  "hashtags": ["sale", "summer"],
-  "interactiveLinks": [
-    { "label": "Shop Now", "url": "https://..." }
-  ],
-  "origin": {
-    "type": "local", // or "franchise" or "group"
-    "name": "Local A",
-    "avatarUrl": "https://..."
-  },
-  "timestamp": {
-    "show": true,
-    "value": "2025-05-01T10:00:00Z"
-  },
-}
 
-// Collection: notifications
-{
-  "_id": "<notificationId>",
-  "message": "Check our new deal!",
-  "linkedPostId": "<postId>", // optional
-  "scheduledAt": "2025-05-07T09:00:00Z",
-  "sentBy": {
-    "adminId": "<adminId>",
-    "role": "franchise"
-  },
-  sendTo: localId | "all"
+#### Collection: posts
+```typescript
+export interface Post {
+  _id: string; // postId
+  title: string;
+  imageUrl: string;
+  description: string;
+  expiryTime: string; // ISO string format
+  hashtags: string[];
+  interactiveLinks: {
+    label: string;
+    url: string;
+  }[];
+  origin: {
+    type: 'local' | 'admin'; // Origin type (could be local or admin)
+    name: string;
+    avatarUrl: string;
+  };
+  timestamp: {
+    show: boolean;
+    value: string; // ISO string format
+  };
 }
+````
+#### Collection: notifications
+```typescript
+export interface Notification {
+  _id: string; // notificationId
+  message: string;
+  linkedPostId?: string; // Optional link to post
+  scheduledAt: string; // ISO string format
+  sentBy: {
+    adminId: string;
+    role: 'local' | 'franchise' | 'group' | 'system';
+  };
+  sendTo: string | 'all'; // localId or 'all' to send to all users
+}
+```
 
-// Collection: admins
-{
-  "_id": "<adminId>",
-  "role": "local", // or "franchise", "group", "system"
-  "managesEntityId": "<localId | franchiseId | groupId>"
+#### Collection: admins
+```typescript
+export interface Admin {
+  _id: string; // adminId
+  role: 'local' | 'franchise' | 'group' | 'system'; // Role of the admin
+  managesEntityId: string; // localId, franchiseId, or groupId
 }
+````
 
-// Collection: locals
-{
-  "_id": "<localId>",
-  "name": "Store 45",
-  "logoUrl": "", 
-  "description": "Our downtown location...",
-  "openingHours": {
-    "mon": [{from: "09:00", to: "13:30"}, {from: 16:00, to: 21:00}],
-    "sat": ["10:00", "14:00"]
-  },
-  "contact": {
-    "phone": "+123456789",
-    "email": "store@example.com",
-    "website": "https://...",
-    "social": {
-      "instagram": "...",
-      "facebook": "..."
-    }
-  }
+#### Collection: locals
+```typescript
+export interface Local {
+  _id: string; // localId
+  name: string;
+  logoUrl: string;
+  description: string;
+  openingHours: {
+    mon: { from: string; to: string }[];
+    sat: { from: string; to: string }[];
+  };
+  contact: {
+    phone: string;
+    email: string;
+    website: string;
+    social: {
+      instagram: string;
+      facebook: string;
+    };
+  };
 }
+````
