@@ -1,113 +1,263 @@
-# Estrategia de Encuesta para Validar Plataforma de Fidelización
+# ENCUESTA DE VALIDACIÓN
+## Plataforma de Fidelización para Comercios Locales
 
-## Preguntas Clave para la Encuesta
+### INTRODUCCIÓN PARA EL ENTREVISTADO
 
-### Comunicación con Clientes
-1. ¿Qué métodos utiliza actualmente para comunicarse con sus clientes? (redes sociales, email, WhatsApp, etc.)
-2. ¿Con qué frecuencia envía comunicaciones o promociones a sus clientes?
-3. ¿Qué desafíos enfrenta para mantener a sus clientes informados sobre novedades o promociones?
+*Estimado/a propietario/a o responsable de negocio:*
 
-### Fidelización Actual
-4. ¿Cuenta actualmente con algún programa de fidelización? ¿Cómo funciona?
-5. ¿Qué porcentaje de sus clientes son recurrentes?
-6. ¿Qué estrategias han sido más efectivas para conseguir que sus clientes regresen?
+Gracias por participar en esta breve encuesta. Estamos desarrollando una solución que permite a comercios locales como el suyo tener su propia aplicación de fidelización sin necesidad de conocimientos técnicos ni grandes inversiones. Sus respuestas son completamente confidenciales y nos ayudarán enormemente a diseñar un producto que realmente responda a sus necesidades.
 
-### Validación del Concepto
-7. En una escala de 1-10, ¿qué tan interesante le resulta tener una app específica para su negocio sin necesidad de desarrollo propio?
-8. ¿Qué tipo de contenido le gustaría compartir con sus clientes a través de una app?
-9. ¿Qué valor ve en poder enviar notificaciones push directamente a los teléfonos de sus clientes?
+Tiempo estimado: 8-10 minutos.
 
-### Funcionalidades Deseadas
-10. De estas funcionalidades, ordene del 1 al 5 según su importancia:
-    - Información actualizable del negocio (horarios, ubicación, etc.)
-    - Feed de noticias y promociones
-    - Notificaciones push personalizables
-    - Programa de puntos/recompensas
-    - Reseñas y comentarios de clientes
+---
 
-11. ¿Qué otras funcionalidades le gustaría ver en una app de fidelización para su negocio?
+### SECCIÓN 1: PERFIL DEL NEGOCIO
 
-### Implementación y Uso
-12. ¿Quién sería responsable de actualizar la información y generar contenido para la app?
-13. ¿Cuánto tiempo podría dedicar semanalmente a la gestión de su presencia en la app?
-14. ¿Qué métricas le interesaría monitorear sobre la interacción de sus clientes con la app?
+1. **¿Qué tipo de negocio dirige?**
+   - [ ] Restaurante/Cafetería/Bar
+   - [ ] Tienda minorista (moda, hogar, etc.)
+   - [ ] Salón de belleza/Peluquería
+   - [ ] Centro de servicios profesionales
+   - [ ] Otro (especificar): _________________
 
-## Estrategia de Implementación de la Encuesta
+2. **¿Cuánto tiempo lleva operando su negocio?**
+   - [ ] Menos de 1 año
+   - [ ] 1-3 años
+   - [ ] 3-5 años
+   - [ ] Más de 5 años
 
-### 1. Segmentación de Potenciales Clientes
-- **Por tipo**: Negocios individuales, franquicias y conglomerados
-- **Por sector**: Restaurantes, tiendas minoristas, servicios, etc.
-- **Por tamaño**: Micro, pequeña y mediana empresa
+3. **¿Cuántos empleados tiene su negocio?**
+   - [ ] Solo yo (autónomo)
+   - [ ] 2-5 empleados
+   - [ ] 6-10 empleados
+   - [ ] Más de 10 empleados
 
-### 2. Métodos de Acercamiento
-- **Acercamiento directo**: Visitas personales a negocios locales seleccionados
-- **Referencias**: Contactar a través de cámaras de comercio o asociaciones empresariales
-- **Networking**: Eventos locales para empresarios y emprendedores
-- **Digital**: Campañas específicas en LinkedIn o grupos de Facebook para negocios
+4. **¿Cuántos clientes únicos estima que visitan su negocio mensualmente?**
+   - [ ] Menos de 100
+   - [ ] 100-300
+   - [ ] 301-500
+   - [ ] 501-1000
+   - [ ] Más de 1000
 
-### 3. Incentivos para Participación
-- **Acceso gratuito**: Periodo de prueba extendido al lanzar la plataforma
-- **Consultoría breve**: Sesión de 30 minutos sobre estrategias de fidelización
-- **Informe personalizado**: Sobre oportunidades de fidelización para su negocio específico
+---
 
-### 4. Validación Profunda
-- **Demostración del prototipo**: Mostrar la app en funcionamiento (aunque sea con datos simulados)
-- **Prueba de concepto**: Implementar la solución con 2-3 negocios comprometidos por segmento
-- **Feedback estructurado**: Crear un canal directo para sugerencias durante la fase piloto
+### SECCIÓN 2: PRESENCIA DIGITAL ACTUAL
 
-### 5. Seguimiento
-- **Programa de early adopters**: Grupo selecto de negocios con beneficios especiales
-- **Comunidad de usuarios**: Grupo privado para compartir mejores prácticas
-- **Iteraciones rápidas**: Ciclos cortos de mejora basados en feedback real
+5. **¿Con qué herramientas digitales cuenta actualmente su negocio?** (Seleccione todas las que apliquen)
+   - [ ] Página web propia
+   - [ ] Perfiles en redes sociales (Facebook, Instagram, etc.)
+   - [ ] Aplicación móvil propia
+   - [ ] Presencia en plataformas de terceros (Google My Business, TripAdvisor, etc.)
+   - [ ] Sistema de email marketing
+   - [ ] Sistema de fidelización digital
+   - [ ] Ninguna de las anteriores
 
-## Comunicación del Valor
+6. **¿Qué canales utiliza principalmente para comunicarse con sus clientes?** (Seleccione hasta 3)
+   - [ ] Contacto presencial en tienda
+   - [ ] Llamadas telefónicas
+   - [ ] WhatsApp u otras apps de mensajería
+   - [ ] Email marketing
+   - [ ] Publicaciones en redes sociales
+   - [ ] Mensajes de texto (SMS)
+   - [ ] Otro (especificar): _________________
 
-### Para Negocios Individuales
-"Una app propia para su negocio sin costos de desarrollo ni conocimientos técnicos, centrada en mantener a sus clientes conectados e informados"
+7. **En una escala del 1 al 5, ¿qué tan satisfecho está con la efectividad de su comunicación actual con los clientes?**
+   - [ ] 1 - Nada satisfecho
+   - [ ] 2 - Poco satisfecho
+   - [ ] 3 - Neutral
+   - [ ] 4 - Satisfecho
+   - [ ] 5 - Muy satisfecho
 
-### Para Franquicias
-"Comunicación consistente con sus clientes en todas las ubicaciones, manteniendo la identidad de marca con la flexibilidad para promociones locales"
+8. **¿Qué desafíos principales enfrenta en la comunicación con sus clientes?** (Seleccione hasta 3)
+   - [ ] No tengo una base de datos organizada de clientes
+   - [ ] Falta de tiempo para mantener la comunicación constante
+   - [ ] Desconocimiento de herramientas digitales
+   - [ ] Costo elevado de soluciones tecnológicas
+   - [ ] Dificultad para segmentar mensajes según tipos de cliente
+   - [ ] Baja tasa de respuesta/engagement con comunicaciones actuales
+   - [ ] Otro (especificar): _________________
 
-### Para Conglomerados
-"Una plataforma unificada que conecta todos sus negocios con sus clientes, permitiendo tanto comunicaciones conjuntas como individuales"
+---
 
-## Herramientas Recomendadas
+### SECCIÓN 3: FIDELIZACIÓN DE CLIENTES
 
-### Para la Encuesta
-- **Google Forms**: Opción gratuita y flexible
-- **Typeform**: Para una experiencia más profesional
-- **SurveyMonkey**: Para análisis avanzado de resultados
+9. **¿Actualmente cuenta con algún programa de fidelización para sus clientes?**
+   - [ ] Sí, un sistema digital
+   - [ ] Sí, un sistema manual (tarjetas de sellos, etc.)
+   - [ ] No, pero estamos interesados en implementar uno
+   - [ ] No, y no lo consideramos necesario actualmente
 
-### Para el Análisis
-- **Hojas de cálculo**: Para agregar y analizar datos cuantitativos
-- **Miro/Figma**: Para mapear y visualizar insights cualitativos
-- **Notion**: Para organizar y compartir resultados con el equipo
+10. **Si tiene un programa de fidelización, ¿qué tipo de incentivos ofrece?** (Seleccione todas las que apliquen)
+    - [ ] Descuentos por compras recurrentes
+    - [ ] Puntos canjeables por productos/servicios
+    - [ ] Regalos en fechas especiales (cumpleaños, aniversarios)
+    - [ ] Acceso a ofertas exclusivas
+    - [ ] Comunicación personalizada
+    - [ ] Experiencias VIP o trato preferencial
+    - [ ] No tengo un programa de fidelización
+    - [ ] Otro (especificar): _________________
 
-### Para Validación
-- **Figma/Adobe XD**: Para prototipos interactivos
-- **UserTesting**: Para pruebas de usabilidad remotas
-- **Loom**: Para grabar demostraciones y recibir feedback asíncrono
+11. **¿Qué porcentaje aproximado de sus ventas proviene de clientes recurrentes?**
+    - [ ] Menos del 20%
+    - [ ] 20-40%
+    - [ ] 41-60%
+    - [ ] 61-80%
+    - [ ] Más del 80%
+    - [ ] No lo sé con certeza
 
-## Plan de Acción
+12. **¿Cuánto invertiría mensualmente en una solución que aumentara significativamente la fidelidad y frecuencia de visita de sus clientes?**
+    - [ ] No invertiría en este momento
+    - [ ] Hasta 29€/mes
+    - [ ] 30-59€/mes
+    - [ ] 60-99€/mes
+    - [ ] 100€/mes o más
 
-### Semana 1-2: Preparación
-- Finalizar el cuestionario y segmentar potenciales participantes
-- Preparar materiales de apoyo (presentación del concepto, demo preliminar)
-- Definir objetivos cuantitativos (número de encuestas, distribución por segmento)
+---
 
-### Semana 3-4: Ejecución
-- Distribuir encuestas y realizar seguimiento proactivo
-- Conducir entrevistas personales con negocios representativos
-- Recopilar y organizar datos preliminares
+### SECCIÓN 4: REACCIÓN A LA PROPUESTA
 
-### Semana 5-6: Análisis y Decisiones
-- Analizar resultados y extraer insights clave
-- Identificar patrones por segmento
-- Ajustar prioridades de desarrollo basadas en feedback
-- Seleccionar negocios para piloto
+*[Breve descripción de la plataforma]*
 
-### Métricas de Éxito
-- **Tasa de respuesta**: >30% del total contactado
-- **Interés confirmado**: >50% expresando interés de nivel 7 o superior (escala 1-10)
-- **Compromiso para piloto**: Al menos 2 negocios por segmento
-- **Claridad de necesidades**: Identificación de 3-5 funcionalidades prioritarias con claro consenso
+Imagine una plataforma que le permite tener su propia aplicación móvil personalizada, sin necesidad de contratar desarrolladores ni tener conocimientos técnicos. Esta aplicación le permitiría:
+- Enviar notificaciones directas al teléfono de sus clientes
+- Compartir novedades, promociones y eventos especiales
+- Personalizar la experiencia según el historial del cliente
+- Obtener estadísticas sobre la efectividad de sus comunicaciones
+- Todo configurado en menos de una hora y a un costo mensual accesible
+
+13. **Basado en esta descripción, ¿qué tan interesado estaría en utilizar esta plataforma?**
+    - [ ] 1 - Nada interesado
+    - [ ] 2 - Poco interesado
+    - [ ] 3 - Neutral
+    - [ ] 4 - Interesado
+    - [ ] 5 - Muy interesado
+
+14. **¿Qué características le resultarían más valiosas?** (Seleccione hasta 3)
+    - [ ] Notificaciones push directas a clientes
+    - [ ] Personalización visual con colores/logo de mi negocio
+    - [ ] Sistema de puntos/recompensas digital
+    - [ ] Estadísticas de clientes y su comportamiento
+    - [ ] Programación de comunicaciones con antelación
+    - [ ] Segmentación de clientes para comunicaciones específicas
+    - [ ] Cupones digitales redimibles en tienda
+    - [ ] Otro (especificar): _________________
+
+15. **¿Qué preocupaciones tendría sobre este tipo de plataforma?** (Seleccione todas las que apliquen)
+    - [ ] Costo total (inicial y recurrente)
+    - [ ] Tiempo necesario para administrarla
+    - [ ] Complejidad técnica o curva de aprendizaje
+    - [ ] Adopción por parte de mis clientes
+    - [ ] Privacidad y manejo de datos de clientes
+    - [ ] Integración con mis sistemas actuales
+    - [ ] Otro (especificar): _________________
+
+16. **Si esta plataforma cumpliera sus expectativas, ¿en cuánto tiempo consideraría implementarla?**
+    - [ ] Inmediatamente
+    - [ ] En los próximos 3 meses
+    - [ ] En los próximos 6 meses
+    - [ ] En el próximo año
+    - [ ] No lo consideraría por ahora
+
+17. **¿Qué resultados esperaría obtener en los primeros 3 meses de uso?** (Seleccione hasta 3)
+    - [ ] Aumento en visitas recurrentes de clientes
+    - [ ] Mayor gasto promedio por cliente
+    - [ ] Mejor conocimiento de preferencias de clientes
+    - [ ] Reducción en costos de marketing
+    - [ ] Capacidad de comunicación directa con clientes
+    - [ ] Diferenciación frente a competidores
+    - [ ] Otro (especificar): _________________
+
+---
+
+### SECCIÓN 5: FUNCIONALIDADES Y PRECIO
+
+18. **¿Qué funcionalidades consideraría imprescindibles para justificar una suscripción mensual?** (Seleccione todas las que apliquen)
+    - [ ] Aplicación móvil completamente personalizada con mi marca
+    - [ ] Envío ilimitado de notificaciones push
+    - [ ] Sistema de puntos y recompensas digital
+    - [ ] Creación de cupones y ofertas digitales
+    - [ ] Estadísticas detalladas de comportamiento de clientes
+    - [ ] Segmentación avanzada para comunicaciones
+    - [ ] Integración con redes sociales
+    - [ ] Integración con mi sistema de gestión/ventas
+    - [ ] Capacidad de venta directa a través de la app
+    - [ ] Otro (especificar): _________________
+
+19. **En base a las funcionalidades que valoraría, ¿qué modelo de precio le parecería más adecuado?**
+    - [ ] Plan básico con funcionalidades limitadas (20-30€/mes)
+    - [ ] Plan estándar con mayoría de funcionalidades (50-70€/mes)
+    - [ ] Plan premium con todas las funcionalidades (80-100€/mes)
+    - [ ] Modelo freemium (gratis básico + pago por funcionalidades avanzadas)
+    - [ ] Pago por uso (según volumen de clientes o notificaciones)
+    - [ ] Otro (especificar): _________________
+
+20. **¿Qué factores consideraría para decidir continuar con la suscripción después de los primeros meses?** (Seleccione hasta 3)
+    - [ ] Aumento demostrable en ventas/visitas
+    - [ ] Facilidad de uso y bajo tiempo de gestión
+    - [ ] Adopción por parte de clientes
+    - [ ] Calidad del soporte técnico
+    - [ ] Mejoras y nuevas funcionalidades constantes
+    - [ ] Relación calidad-precio
+    - [ ] Otro (especificar): _________________
+
+---
+
+### SECCIÓN 6: IMPLEMENTACIÓN Y ADOPCIÓN
+
+21. **¿Quién sería responsable de gestionar esta plataforma en su negocio?**
+    - [ ] Yo mismo/a (propietario/a)
+    - [ ] Empleado responsable de marketing/comunicación
+    - [ ] Empleado con otras responsabilidades también
+    - [ ] Contrataría a alguien específicamente para esto
+    - [ ] No estoy seguro/a
+
+22. **¿Cuánto tiempo semanal podría dedicar (usted o su equipo) a gestionar esta plataforma?**
+    - [ ] Menos de 1 hora
+    - [ ] 1-2 horas
+    - [ ] 3-5 horas
+    - [ ] Más de 5 horas
+
+23. **¿Qué tipo de soporte valoraría más para la implementación?** (Seleccione hasta 2)
+    - [ ] Configuración guiada paso a paso (autónoma)
+    - [ ] Videotutoriales y documentación detallada
+    - [ ] Soporte por chat/email
+    - [ ] Asistencia telefónica
+    - [ ] Configuración inicial por parte de especialistas
+    - [ ] Formación personalizada presencial
+
+24. **¿Qué estrategias utilizaría para promover la adopción de la app entre sus clientes?** (Seleccione todas las que apliquen)
+    - [ ] Promoción en el punto de venta (carteles, flyers)
+    - [ ] Incentivos exclusivos para usuarios de la app
+    - [ ] Formación a empleados para promoverla
+    - [ ] Promoción en redes sociales
+    - [ ] Campañas de email marketing
+    - [ ] Evento especial de lanzamiento
+    - [ ] Otro (especificar): _________________
+
+---
+
+### SECCIÓN 7: DATOS DE CONTACTO (OPCIONAL)
+
+Si está interesado en conocer más sobre esta plataforma o participar en la fase piloto, por favor déjenos sus datos de contacto:
+
+- Nombre: _________________
+- Nombre del Negocio: _________________
+- Email: _________________
+- Teléfono: _________________
+- Mejor horario para contactar: _________________
+
+25. **¿Estaría interesado en participar como negocio piloto en la fase inicial del lanzamiento?**
+    - [ ] Sí, me interesaría ser parte del grupo inicial de usuarios
+    - [ ] Tal vez, dependería de las condiciones
+    - [ ] No en este momento
+
+26. **¿Hay algún comentario adicional o sugerencia que le gustaría compartir?**
+    _______________________________________________
+    _______________________________________________
+    _______________________________________________
+
+---
+
+**¡Muchas gracias por su tiempo y valiosas respuestas!**
+
+Su participación nos ayudará enormemente a crear una solución adaptada a las necesidades reales de comercios como el suyo.
