@@ -16,7 +16,7 @@ export interface Post {
   hashtags: string[]
   interactiveLinks: { label: string,url: string }[]
   origin: {
-    type: 'local' | 'admin' // Origin type (could be local or admin)
+    type: 'local' | 'admin' | 'system'  // Origin type (could be local or admin)
     name: string
     avatarUrl: string
   }
@@ -47,7 +47,7 @@ export interface Notification {
 export interface Admin {
   _id: string // adminId
   role: 'local' | 'admin' | 'system' // Role of the admin
-  managesEntityId: string // localId, franchiseId, or groupId
+  managesEntityId: string[] // localId, franchiseId, or groupId
 }
 ```
 
