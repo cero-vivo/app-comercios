@@ -32,13 +32,13 @@ NO SQL
 {
   "_id": "<notificationId>",
   "message": "Check our new deal!",
-  "targetScope": "franchise",
   "linkedPostId": "<postId>", // optional
   "scheduledAt": "2025-05-07T09:00:00Z",
   "sentBy": {
     "adminId": "<adminId>",
     "role": "franchise"
-  }
+  },
+  sendTo: localId | "all"
 }
 
 // Collection: admins
