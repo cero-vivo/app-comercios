@@ -7,13 +7,26 @@ export interface User {
 ```
 #### Posts
 ```typescript
+export type PostType =
+  | "coupon"           // Ofertas con código o QR, válidas por tiempo limitado.
+  | "benefit"          // Ventajas permanentes para usuarios fieles (ej: 2x1 todos los martes).
+  | "promotion"        // Rebajas u ofertas por tiempo limitado, sin necesidad de código.
+  | "story"            // Relatos breves sobre el origen del local, logros o curiosidades.
+  | "vision"           // Mensajes institucionales, valores o misiones del grupo o franquicia.
+  | "news"             // Anuncios recientes: nuevas sucursales, productos o servicios.
+  | "event"            // Invitaciones a eventos especiales, lanzamientos o ferias.
+  | "recommendation"   // Sugerencias de productos destacados o combinaciones recomendadas.<>
+  | "testimonial"      // Comentarios o valoraciones destacadas de clientes.
+  | "staff"            // Presentación del equipo o perfiles de personas detrás del local.
+  | "tutorial"        // Cómo usar un producto o acceder a un beneficio, paso a paso.
+
 export interface Post {
   _id: string // postId
   title: string
   imageUrl: string
   description: string
   expiryTime: string // ISO string format
-  hashtags: string[]
+  hashtags: PostType[]
   interactiveLinks: { label: string,url: string }[]
   origin: {
     type: 'local' | 'admin' | 'system'  // Origin type (could be local or admin)

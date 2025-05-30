@@ -7,7 +7,7 @@ export const AboutService = () => {
         getBussinesData: async (): Promise<HttpResponse<Business>> => {
             // Simulamos un fetch retornando una promesa resuelta
             const res: Business = {
-                name: 'Pan & App',
+                name: '5asec',
                 description:
                     `La tintorería en los años 60
 

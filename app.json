@@ -18,7 +18,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.corazonesestudio.AppComercios",
       "config": {
-        "googleMapsApiKey": "AIzaSyB4FG-2d3SRkWcgJ0FxedfgEmh9E8Mr9JY"
+        "googleMapsApiKey": ""
       }
     },
     "android": {
@@ -29,7 +29,7 @@
       "package": "com.corazonesestudio.AppComercios",
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyB4FG-2d3SRkWcgJ0FxedfgEmh9E8Mr9JY"
+          "apiKey": ""
         }
       }
     },
