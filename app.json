@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "5asec",
-    "slug": "AppComercios",
+    "slug": "app-comercios-test",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon-1.png",
@@ -19,6 +19,9 @@
       "bundleIdentifier": "com.corazonesestudio.AppComercios",
       "config": {
         "googleMapsApiKey": ""
+      },
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -31,7 +34,11 @@
         "googleMaps": {
           "apiKey": ""
         }
-      }
+      },
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "plugins": [
       "expo-router",
@@ -59,6 +66,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "231a12f4-27c0-456d-8189-31cae738c0cc"
+      }
+    },
+    "owner": "cero.vivo"
   }
 }
